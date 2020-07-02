@@ -1,4 +1,4 @@
-package tbl;
+package tcy365webdb;
 
 import commField.IId;
 import lombok.Data;
