@@ -6,7 +6,7 @@ import lombok.Data;
 import java.util.Date;
 
 @Data
-public class tbl_FriendLinks implements IId {
+public class tblFriendLinks implements IId {
     private int tblwebid;
     private String tcyWebUrl;
     private String content;

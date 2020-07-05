@@ -6,7 +6,7 @@ import lombok.Data;
 import java.util.Date;
 
 @Data
-public class tbl_web implements IId {
+public class tblWeb implements IId {
     private String webname;
     private String webnameshort;
     private String webspelling;
