@@ -11,8 +11,7 @@
         http://www.springframework.org/schema/context/spring-context.xsd">
 
 
-
-<context:component-scan base-package="com.tcy365.web"/>
+    <context:component-scan base-package="com.tcy365.web"/>
 
     <!-- 一个配置节解决映射器和适配器的配置注解配置 -->
     <mvc:annotation-driven></mvc:annotation-driven>
@@ -25,8 +24,6 @@
         <property name="prefix" value="/WEB-INF/view/"/>
 
     </bean>
-
-
 
 
     <!-- 静态资源映射 -->
