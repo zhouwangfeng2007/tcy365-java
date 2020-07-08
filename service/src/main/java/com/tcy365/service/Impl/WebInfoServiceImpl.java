@@ -1,10 +1,11 @@
 package com.tcy365.service.Impl;
 
+import com.tcy365.dao.tcy365webdb.tblWebDao;
+import com.tcy365.entity.tcy365web.tblWeb;
 import com.tcy365.service.WebInfoService;
-import com.tcy365web.dao.tblWebDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import tcy365webdb.tblWeb;
+
 
 import java.util.List;
 

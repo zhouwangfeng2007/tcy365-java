@@ -1,8 +1,10 @@
-package com.tcy365web.dao;
+package com.tcy365.dao.tcy365webdb;
 
+
+import com.tcy365.entity.tcy365web.tblWeb;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
-import tcy365webdb.tblWeb;
+
 
 import java.util.List;
 

@@ -1,10 +1,7 @@
-package tcy365webdb;
-
-import commField.IId;
+package com.tcy365.entity.tcy365web;
+import com.tcy365.entity.common.IId;
 import lombok.Data;
-
 import java.util.Date;
-
 @Data
 public class tblWeb implements IId {
     private String webname;

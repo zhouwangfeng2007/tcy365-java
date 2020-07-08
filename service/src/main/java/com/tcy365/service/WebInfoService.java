@@ -1,6 +1,8 @@
 package com.tcy365.service;
 
-import tcy365webdb.tblWeb;
+
+
+import com.tcy365.entity.tcy365web.tblWeb;
 
 import java.util.List;
 
