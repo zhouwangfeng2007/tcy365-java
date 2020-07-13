@@ -3,7 +3,7 @@ package com.tcy365.adm.controller;
 
 import com.tcy365.common.SelfCheckResultItem;
 import com.tcy365.entity.tcy365web.tblWeb;
-import com.tcy365.service.WebInfoService;
+import com.tcy365.service.ITblWebService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,7 +20,7 @@ import java.util.List;
 public class SelfCheckController {
 
     @Autowired
-    private WebInfoService webInfoService;
+    private ITblWebService tblWebService;
 
     @RequestMapping(value = "/checkall", method = RequestMethod.GET)
     @ResponseBody
@@ -28,7 +28,8 @@ public class SelfCheckController {
         List<SelfCheckResultItem> listResult = new ArrayList<>();
         listResult.add(getCurrentSysTime());
 
-        tblWeb web=webInfoService.getWebById(1);
+
+        listResult.add(checkDb());
         return listResult;
     }
 
@@ -38,6 +39,14 @@ public class SelfCheckController {
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
         String date = df.format(new Date());// new Date()为获取当前系统时间
         item.setCheckResult(date);
+        return item;
+    }
+
+    private SelfCheckResultItem checkDb() {
+        SelfCheckResultItem item = new SelfCheckResultItem();
+        item.setCheckItem("检测数据库");
+        tblWeb web = tblWebService.getWebById(1);
+        item.setCheckResult(web.getTitle() + "成功" );
         return item;
     }
 }

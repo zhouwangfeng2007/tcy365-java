@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface tblWebDao {
+public interface ITblWebDao   {
 
     @Select("select * from tbl_Web where Id=#{id}")
     public tblWeb getWebById(long id);

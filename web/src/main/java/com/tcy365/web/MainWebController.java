@@ -1,7 +1,7 @@
 package com.tcy365.web;
 
 import com.tcy365.entity.tcy365web.tblWeb;
-import com.tcy365.service.WebInfoService;
+import com.tcy365.service.ITblWebService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,13 +19,13 @@ import java.util.List;
 public class MainWebController {
 
     @Autowired
-    private WebInfoService webInfoService;
+    private ITblWebService ITblWebService;
 
     @RequestMapping(value = "/index.html", method = RequestMethod.GET)
     public String mainWeb(HttpServletRequest request, Model model) {
         String uri = request.getRequestURI();
-        tblWeb webIndexMain = webInfoService.getWebById(1);
-        List<tblWeb> allWeb = webInfoService.getAll();
+        tblWeb webIndexMain = ITblWebService.getWebById(1);
+        List<tblWeb> allWeb = ITblWebService.getAll();
         model.addAttribute("allWeb", allWeb);
         return "mainweb.jsp";
     }
