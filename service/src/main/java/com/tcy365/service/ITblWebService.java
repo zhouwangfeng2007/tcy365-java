@@ -2,12 +2,17 @@ package com.tcy365.service;
 
 
 
-import com.tcy365.entity.tcy365web.tblWeb;
+
+import com.tcy365.entity.tcy365web.tbl_Web;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-public interface ITblWebService {
-   public tblWeb getWebById(long id);
 
-   public List<tblWeb> getAll();
+
+
+public interface ITblWebService {
+   public tbl_Web getWebById(Integer id);
+
+   public List<tbl_Web> getAll();
 }

@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tcy365.dao.tcy365webdb.tbl_WebMapper">
+  <resultMap id="BaseResultMap" type="com.tcy365.entity.tcy365web.tbl_Web">
+    <id column="Id" jdbcType="INTEGER" property="id" />
+    <result column="WebName" jdbcType="VARCHAR" property="webname" />
+    <result column="WebNameShort" jdbcType="VARCHAR" property="webnameshort" />
+    <result column="WebSpelling" jdbcType="VARCHAR" property="webspelling" />
+    <result column="ChannelId" jdbcType="INTEGER" property="channelid" />
+    <result column="WebGrade" jdbcType="INTEGER" property="webgrade" />
+    <result column="WebArea" jdbcType="VARCHAR" property="webarea" />
+    <result column="WebUrl" jdbcType="VARCHAR" property="weburl" />
+    <result column="WebDomain" jdbcType="VARCHAR" property="webdomain" />
+    <result column="IsAudit" jdbcType="INTEGER" property="isaudit" />
+    <result column="Title" jdbcType="VARCHAR" property="title" />
+    <result column="KeyWords" jdbcType="VARCHAR" property="keywords" />
+    <result column="Description_" jdbcType="VARCHAR" property="description" />
+    <result column="IndexStatJs" jdbcType="VARCHAR" property="indexstatjs" />
+    <result column="IsVisible" jdbcType="INTEGER" property="isvisible" />
+    <result column="CreateTime" jdbcType="TIMESTAMP" property="createtime" />
+    <result column="LastUpdateTime" jdbcType="TIMESTAMP" property="lastupdatetime" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.tcy365.entity.tcy365web.tbl_Web">
+    <result column="FriendLinks" jdbcType="CLOB" property="friendlinks" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    Id, WebName, WebNameShort, WebSpelling, ChannelId, WebGrade, WebArea, WebUrl, WebDomain, 
+    IsAudit, Title, KeyWords, Description_, IndexStatJs, IsVisible, CreateTime, LastUpdateTime
+  </sql>
+  <sql id="Blob_Column_List">
+    FriendLinks
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from tbl_Web
+    where Id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tbl_Web
+    where Id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.tcy365.entity.tcy365web.tbl_Web">
+    insert into tbl_Web (Id, WebName, WebNameShort, 
+      WebSpelling, ChannelId, WebGrade, 
+      WebArea, WebUrl, WebDomain, 
+      IsAudit, Title, KeyWords, 
+      Description_, IndexStatJs, IsVisible, 
+      CreateTime, LastUpdateTime, FriendLinks
+      )
+    values (#{id,jdbcType=INTEGER}, #{webname,jdbcType=VARCHAR}, #{webnameshort,jdbcType=VARCHAR}, 
+      #{webspelling,jdbcType=VARCHAR}, #{channelid,jdbcType=INTEGER}, #{webgrade,jdbcType=INTEGER}, 
+      #{webarea,jdbcType=VARCHAR}, #{weburl,jdbcType=VARCHAR}, #{webdomain,jdbcType=VARCHAR}, 
+      #{isaudit,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{keywords,jdbcType=VARCHAR}, 
+      #{description,jdbcType=VARCHAR}, #{indexstatjs,jdbcType=VARCHAR}, #{isvisible,jdbcType=INTEGER}, 
+      #{createtime,jdbcType=TIMESTAMP}, #{lastupdatetime,jdbcType=TIMESTAMP}, #{friendlinks,jdbcType=CLOB}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.tcy365.entity.tcy365web.tbl_Web">
+    insert into tbl_Web
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        Id,
+      </if>
+      <if test="webname != null">
+        WebName,
+      </if>
+      <if test="webnameshort != null">
+        WebNameShort,
+      </if>
+      <if test="webspelling != null">
+        WebSpelling,
+      </if>
+      <if test="channelid != null">
+        ChannelId,
+      </if>
+      <if test="webgrade != null">
+        WebGrade,
+      </if>
+      <if test="webarea != null">
+        WebArea,
+      </if>
+      <if test="weburl != null">
+        WebUrl,
+      </if>
+      <if test="webdomain != null">
+        WebDomain,
+      </if>
+      <if test="isaudit != null">
+        IsAudit,
+      </if>
+      <if test="title != null">
+        Title,
+      </if>
+      <if test="keywords != null">
+        KeyWords,
+      </if>
+      <if test="description != null">
+        Description_,
+      </if>
+      <if test="indexstatjs != null">
+        IndexStatJs,
+      </if>
+      <if test="isvisible != null">
+        IsVisible,
+      </if>
+      <if test="createtime != null">
+        CreateTime,
+      </if>
+      <if test="lastupdatetime != null">
+        LastUpdateTime,
+      </if>
+      <if test="friendlinks != null">
+        FriendLinks,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="webname != null">
+        #{webname,jdbcType=VARCHAR},
+      </if>
+      <if test="webnameshort != null">
+        #{webnameshort,jdbcType=VARCHAR},
+      </if>
+      <if test="webspelling != null">
+        #{webspelling,jdbcType=VARCHAR},
+      </if>
+      <if test="channelid != null">
+        #{channelid,jdbcType=INTEGER},
+      </if>
+      <if test="webgrade != null">
+        #{webgrade,jdbcType=INTEGER},
+      </if>
+      <if test="webarea != null">
+        #{webarea,jdbcType=VARCHAR},
+      </if>
+      <if test="weburl != null">
+        #{weburl,jdbcType=VARCHAR},
+      </if>
+      <if test="webdomain != null">
+        #{webdomain,jdbcType=VARCHAR},
+      </if>
+      <if test="isaudit != null">
+        #{isaudit,jdbcType=INTEGER},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="keywords != null">
+        #{keywords,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="indexstatjs != null">
+        #{indexstatjs,jdbcType=VARCHAR},
+      </if>
+      <if test="isvisible != null">
+        #{isvisible,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastupdatetime != null">
+        #{lastupdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="friendlinks != null">
+        #{friendlinks,jdbcType=CLOB},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.tcy365.entity.tcy365web.tbl_Web">
+    update tbl_Web
+    <set>
+      <if test="webname != null">
+        WebName = #{webname,jdbcType=VARCHAR},
+      </if>
+      <if test="webnameshort != null">
+        WebNameShort = #{webnameshort,jdbcType=VARCHAR},
+      </if>
+      <if test="webspelling != null">
+        WebSpelling = #{webspelling,jdbcType=VARCHAR},
+      </if>
+      <if test="channelid != null">
+        ChannelId = #{channelid,jdbcType=INTEGER},
+      </if>
+      <if test="webgrade != null">
+        WebGrade = #{webgrade,jdbcType=INTEGER},
+      </if>
+      <if test="webarea != null">
+        WebArea = #{webarea,jdbcType=VARCHAR},
+      </if>
+      <if test="weburl != null">
+        WebUrl = #{weburl,jdbcType=VARCHAR},
+      </if>
+      <if test="webdomain != null">
+        WebDomain = #{webdomain,jdbcType=VARCHAR},
+      </if>
+      <if test="isaudit != null">
+        IsAudit = #{isaudit,jdbcType=INTEGER},
+      </if>
+      <if test="title != null">
+        Title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="keywords != null">
+        KeyWords = #{keywords,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        Description_ = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="indexstatjs != null">
+        IndexStatJs = #{indexstatjs,jdbcType=VARCHAR},
+      </if>
+      <if test="isvisible != null">
+        IsVisible = #{isvisible,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null">
+        CreateTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastupdatetime != null">
+        LastUpdateTime = #{lastupdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="friendlinks != null">
+        FriendLinks = #{friendlinks,jdbcType=CLOB},
+      </if>
+    </set>
+    where Id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.tcy365.entity.tcy365web.tbl_Web">
+    update tbl_Web
+    set WebName = #{webname,jdbcType=VARCHAR},
+      WebNameShort = #{webnameshort,jdbcType=VARCHAR},
+      WebSpelling = #{webspelling,jdbcType=VARCHAR},
+      ChannelId = #{channelid,jdbcType=INTEGER},
+      WebGrade = #{webgrade,jdbcType=INTEGER},
+      WebArea = #{webarea,jdbcType=VARCHAR},
+      WebUrl = #{weburl,jdbcType=VARCHAR},
+      WebDomain = #{webdomain,jdbcType=VARCHAR},
+      IsAudit = #{isaudit,jdbcType=INTEGER},
+      Title = #{title,jdbcType=VARCHAR},
+      KeyWords = #{keywords,jdbcType=VARCHAR},
+      Description_ = #{description,jdbcType=VARCHAR},
+      IndexStatJs = #{indexstatjs,jdbcType=VARCHAR},
+      IsVisible = #{isvisible,jdbcType=INTEGER},
+      CreateTime = #{createtime,jdbcType=TIMESTAMP},
+      LastUpdateTime = #{lastupdatetime,jdbcType=TIMESTAMP},
+      FriendLinks = #{friendlinks,jdbcType=CLOB}
+    where Id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.tcy365.entity.tcy365web.tbl_Web">
+    update tbl_Web
+    set WebName = #{webname,jdbcType=VARCHAR},
+      WebNameShort = #{webnameshort,jdbcType=VARCHAR},
+      WebSpelling = #{webspelling,jdbcType=VARCHAR},
+      ChannelId = #{channelid,jdbcType=INTEGER},
+      WebGrade = #{webgrade,jdbcType=INTEGER},
+      WebArea = #{webarea,jdbcType=VARCHAR},
+      WebUrl = #{weburl,jdbcType=VARCHAR},
+      WebDomain = #{webdomain,jdbcType=VARCHAR},
+      IsAudit = #{isaudit,jdbcType=INTEGER},
+      Title = #{title,jdbcType=VARCHAR},
+      KeyWords = #{keywords,jdbcType=VARCHAR},
+      Description_ = #{description,jdbcType=VARCHAR},
+      IndexStatJs = #{indexstatjs,jdbcType=VARCHAR},
+      IsVisible = #{isvisible,jdbcType=INTEGER},
+      CreateTime = #{createtime,jdbcType=TIMESTAMP},
+      LastUpdateTime = #{lastupdatetime,jdbcType=TIMESTAMP}
+    where Id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

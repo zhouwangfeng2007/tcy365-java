@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tcy365.dao.tcy365webdb.tbl_FriendLinksMapper">
+  <resultMap id="BaseResultMap" type="com.tcy365.entity.tcy365web.tbl_FriendLinks">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="tblWebId" jdbcType="INTEGER" property="tblwebid" />
+    <result column="tcyWebUrl" jdbcType="VARCHAR" property="tcyweburl" />
+    <result column="CONTENT" jdbcType="VARCHAR" property="content" />
+    <result column="url" jdbcType="VARCHAR" property="url" />
+    <result column="urlType" jdbcType="INTEGER" property="urltype" />
+    <result column="linkTarget" jdbcType="INTEGER" property="linktarget" />
+    <result column="IsVisible" jdbcType="INTEGER" property="isvisible" />
+    <result column="LastUpdateTime" jdbcType="TIMESTAMP" property="lastupdatetime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, tblWebId, tcyWebUrl, CONTENT, url, urlType, linkTarget, IsVisible, LastUpdateTime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tbl_FriendLinks
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tbl_FriendLinks
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.tcy365.entity.tcy365web.tbl_FriendLinks">
+    insert into tbl_FriendLinks (id, tblWebId, tcyWebUrl, 
+      CONTENT, url, urlType, 
+      linkTarget, IsVisible, LastUpdateTime
+      )
+    values (#{id,jdbcType=INTEGER}, #{tblwebid,jdbcType=INTEGER}, #{tcyweburl,jdbcType=VARCHAR}, 
+      #{content,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR}, #{urltype,jdbcType=INTEGER}, 
+      #{linktarget,jdbcType=INTEGER}, #{isvisible,jdbcType=INTEGER}, #{lastupdatetime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.tcy365.entity.tcy365web.tbl_FriendLinks">
+    insert into tbl_FriendLinks
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="tblwebid != null">
+        tblWebId,
+      </if>
+      <if test="tcyweburl != null">
+        tcyWebUrl,
+      </if>
+      <if test="content != null">
+        CONTENT,
+      </if>
+      <if test="url != null">
+        url,
+      </if>
+      <if test="urltype != null">
+        urlType,
+      </if>
+      <if test="linktarget != null">
+        linkTarget,
+      </if>
+      <if test="isvisible != null">
+        IsVisible,
+      </if>
+      <if test="lastupdatetime != null">
+        LastUpdateTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="tblwebid != null">
+        #{tblwebid,jdbcType=INTEGER},
+      </if>
+      <if test="tcyweburl != null">
+        #{tcyweburl,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null">
+        #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="urltype != null">
+        #{urltype,jdbcType=INTEGER},
+      </if>
+      <if test="linktarget != null">
+        #{linktarget,jdbcType=INTEGER},
+      </if>
+      <if test="isvisible != null">
+        #{isvisible,jdbcType=INTEGER},
+      </if>
+      <if test="lastupdatetime != null">
+        #{lastupdatetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.tcy365.entity.tcy365web.tbl_FriendLinks">
+    update tbl_FriendLinks
+    <set>
+      <if test="tblwebid != null">
+        tblWebId = #{tblwebid,jdbcType=INTEGER},
+      </if>
+      <if test="tcyweburl != null">
+        tcyWebUrl = #{tcyweburl,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        CONTENT = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null">
+        url = #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="urltype != null">
+        urlType = #{urltype,jdbcType=INTEGER},
+      </if>
+      <if test="linktarget != null">
+        linkTarget = #{linktarget,jdbcType=INTEGER},
+      </if>
+      <if test="isvisible != null">
+        IsVisible = #{isvisible,jdbcType=INTEGER},
+      </if>
+      <if test="lastupdatetime != null">
+        LastUpdateTime = #{lastupdatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.tcy365.entity.tcy365web.tbl_FriendLinks">
+    update tbl_FriendLinks
+    set tblWebId = #{tblwebid,jdbcType=INTEGER},
+      tcyWebUrl = #{tcyweburl,jdbcType=VARCHAR},
+      CONTENT = #{content,jdbcType=VARCHAR},
+      url = #{url,jdbcType=VARCHAR},
+      urlType = #{urltype,jdbcType=INTEGER},
+      linkTarget = #{linktarget,jdbcType=INTEGER},
+      IsVisible = #{isvisible,jdbcType=INTEGER},
+      LastUpdateTime = #{lastupdatetime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

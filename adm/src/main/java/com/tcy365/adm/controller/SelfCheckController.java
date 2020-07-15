@@ -2,7 +2,9 @@ package com.tcy365.adm.controller;
 
 
 import com.tcy365.common.SelfCheckResultItem;
-import com.tcy365.entity.tcy365web.tblWeb;
+import com.tcy365.dao.tcy365webdb.ITblWebDao;
+import com.tcy365.dao.tcy365webdb.tbl_WebMapper;
+import com.tcy365.entity.tcy365web.tbl_Web;
 import com.tcy365.service.ITblWebService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,8 +21,12 @@ import java.util.List;
 @RequestMapping("/selfcheck")
 public class SelfCheckController {
 
+//    @Autowired
+//    private ITblWebService tblWebServiceImpl;
+
     @Autowired
-    private ITblWebService tblWebService;
+    private tbl_WebMapper tbl_webMapper;
+
 
     @RequestMapping(value = "/checkall", method = RequestMethod.GET)
     @ResponseBody
@@ -45,7 +51,7 @@ public class SelfCheckController {
     private SelfCheckResultItem checkDb() {
         SelfCheckResultItem item = new SelfCheckResultItem();
         item.setCheckItem("检测数据库");
-        tblWeb web = tblWebService.getWebById(1);
+        tbl_Web web = tbl_webMapper.selectByPrimaryKey(1);
         item.setCheckResult(web.getTitle() + "成功" );
         return item;
     }

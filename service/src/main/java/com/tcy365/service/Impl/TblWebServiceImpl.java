@@ -1,7 +1,8 @@
 package com.tcy365.service.Impl;
 
 import com.tcy365.dao.tcy365webdb.ITblWebDao;
-import com.tcy365.entity.tcy365web.tblWeb;
+import com.tcy365.dao.tcy365webdb.tbl_WebMapper;
+import com.tcy365.entity.tcy365web.tbl_Web;
 import com.tcy365.service.ITblWebService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,17 +13,18 @@ import java.util.List;
 @Service
 public class TblWebServiceImpl implements ITblWebService {
 
-    @Autowired
-    private ITblWebDao ITblWebDao;
 
+
+    @Autowired
+    private tbl_WebMapper tbl_webMapper;
 
     @Override
-    public tblWeb getWebById(long id) {
-        return ITblWebDao.getWebById(id);
+    public tbl_Web getWebById(Integer id) {
+        return tbl_webMapper.selectByPrimaryKey(id);
     }
 
     @Override
-    public List<tblWeb> getAll() {
-        return ITblWebDao.getAll();
+    public List<tbl_Web> getAll() {
+        return null;
     }
 }

@@ -1,7 +1,5 @@
 package com.tcy365.dao.tcy365webdb;
-
-
-import com.tcy365.entity.tcy365web.tblWeb;
+import com.tcy365.entity.tcy365web.tbl_Web;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
 
@@ -12,8 +10,8 @@ import java.util.List;
 public interface ITblWebDao   {
 
     @Select("select * from tbl_Web where Id=#{id}")
-    public tblWeb getWebById(long id);
+    public tbl_Web getWebById(long id);
 
     @Select("select * from tbl_Web")
-    public List<tblWeb> getAll();
+    public List<tbl_Web> getAll();
 }

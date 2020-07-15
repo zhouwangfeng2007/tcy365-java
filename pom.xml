@@ -16,6 +16,7 @@
         <module>service</module>
         <module>mapper</module>
         <module>dao</module>
+        <module>mapper</module>
     </modules>
 
 
