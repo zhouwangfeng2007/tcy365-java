@@ -1,4 +1,4 @@
-package com.tcy365.entity.tcy365web;
+package com.tcy365.entity.tcy365webdb;
 
 import java.util.Date;
 

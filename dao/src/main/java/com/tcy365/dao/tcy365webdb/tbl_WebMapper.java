@@ -1,8 +1,6 @@
 package com.tcy365.dao.tcy365webdb;
 
-import com.tcy365.entity.tcy365web.tbl_Web;
-import org.apache.ibatis.annotations.Mapper;
-
+import com.tcy365.entity.tcy365webdb.tbl_Web;
 
 public interface tbl_WebMapper {
     int deleteByPrimaryKey(Integer id);

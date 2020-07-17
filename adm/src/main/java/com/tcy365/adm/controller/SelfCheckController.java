@@ -2,10 +2,8 @@ package com.tcy365.adm.controller;
 
 
 import com.tcy365.common.SelfCheckResultItem;
-import com.tcy365.dao.tcy365webdb.ITblWebDao;
 import com.tcy365.dao.tcy365webdb.tbl_WebMapper;
-import com.tcy365.entity.tcy365web.tbl_Web;
-import com.tcy365.service.ITblWebService;
+import com.tcy365.entity.tcy365webdb.tbl_Web;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

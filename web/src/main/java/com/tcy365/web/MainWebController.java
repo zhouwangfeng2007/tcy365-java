@@ -1,6 +1,7 @@
 package com.tcy365.web;
 
-import com.tcy365.entity.tcy365web.tbl_Web;
+
+import com.tcy365.entity.tcy365webdb.tbl_Web;
 import com.tcy365.service.ITblWebService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
