@@ -62,6 +62,11 @@
     </bean>
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
+        <property name="configLocation" value="classpath:spring/mybatis-config.xml"/>
+        <!--mapper.xml所在位置-->
+        <property name="mapperLocations" value="classpath*:com/tcy365/dao/tcy365webdb/mapper/*Mapper.xml"/>
+        <!--指定需要使用别名的PO类所在的包-->
+        <property name="typeAliasesPackage" value="com.tcy365.entity.tcy365webdb"/>
     </bean>
 
     <!--mapper扫描器-->
