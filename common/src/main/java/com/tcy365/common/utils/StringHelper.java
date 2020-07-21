@@ -11,6 +11,7 @@ public class StringHelper {
      */
     public static String trim(String str, String element) {
         if (str == null || str.equals("")) return str;
+        if (str.equals(element)) return "";
         boolean beginIndexFlag = true;
         boolean endIndexFlag = true;
         do {
@@ -21,6 +22,25 @@ public class StringHelper {
             endIndexFlag = (str.lastIndexOf(element) + 1 == str.length());
         } while (beginIndexFlag || endIndexFlag);
         return str;
+    }
+
+    /**
+     * 判断字符串是否为空
+     *
+     * @param src
+     * @return
+     */
+    public static Boolean isNullOrEmpty(String src) {
+        if (src == null) {
+            return true;
+        }
+        if ("".equals(src)) {
+            return true;
+        }
+        if ("".equals(src.trim())) {
+            return true;
+        }
+        return false;
     }
 
 }
