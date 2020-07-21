@@ -14,5 +14,7 @@ import java.util.List;
 public interface ITblWebService {
    public tbl_Web getWebById(Integer id);
 
+   public tbl_Web getWebByDomain(String webDomain);
+
    public List<tbl_Web> getAll();
 }

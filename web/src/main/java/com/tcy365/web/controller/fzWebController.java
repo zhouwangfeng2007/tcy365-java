@@ -1,4 +1,4 @@
-package com.tcy365.web;
+package com.tcy365.web.controller;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;

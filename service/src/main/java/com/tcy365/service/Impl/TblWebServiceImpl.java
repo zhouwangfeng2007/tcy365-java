@@ -13,7 +13,6 @@ import java.util.List;
 public class TblWebServiceImpl implements ITblWebService {
 
 
-
     @Autowired
     private tbl_WebMapper tbl_webMapper;
 
@@ -23,7 +22,12 @@ public class TblWebServiceImpl implements ITblWebService {
     }
 
     @Override
+    public tbl_Web getWebByDomain(String webDomain) {
+        return tbl_webMapper.selectByDomain(webDomain);
+    }
+
+    @Override
     public List<tbl_Web> getAll() {
-        return null;
+        return tbl_webMapper.selectAll();
     }
 }

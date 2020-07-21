@@ -1,8 +1,8 @@
-package com.tcy365.common;
+package com.tcy365.common.utils;
 
 import java.util.List;
 
-public class Utils {
+public class ListHelper {
     public static boolean IsEmpty(List<?> listSrc){
         if(listSrc==null){
             return true;
