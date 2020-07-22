@@ -22,17 +22,14 @@ public class MainWebController {
     private ITblWebService ITblWebService;
 
     @RequestMapping(value = "/index.html", method = RequestMethod.GET)
-    public String mainWeb(HttpServletRequest request, Model model) {
-        String uri = request.getRequestURI();
-        tbl_Web webIndexMain = ITblWebService.getWebById(1);
-        List<tbl_Web> allWeb = ITblWebService.getAll();
-        model.addAttribute("allWeb", allWeb);
+    public String MainWeb(HttpServletRequest request, Model model) {
+
         return "mainweb.jsp";
     }
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String RootUrl(HttpServletResponse response) {
-        Collection<String> headers = response.getHeaderNames();
-        return "fzweb.jsp";
+
+        return "selectcity.jsp";
     }
 }

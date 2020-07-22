@@ -13,7 +13,7 @@
             <ul class="banner-order" id="J_bannerNum"></ul>
             <div class="index-banner-b slider" id="bannerSlide">
                 <c:choose>
-                    <c:when test="${Util.IsEmpty(ListPcBanner)}">
+                    <c:when test="${ListHelper.IsEmpty(ListPcBanner)}">
                         <ul class="banner-list" id="J_bannerItems">
                             <li style="opacity: 0; z-index: 1;" class="J_banner1"><img
                                     src="//static.tcy365.com/uc/tcy/static/assets/images/ac-banner1.jpg?v=${BizParam.ResourceVersion}"
