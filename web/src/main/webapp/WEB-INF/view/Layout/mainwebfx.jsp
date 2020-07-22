@@ -1,4 +1,5 @@
-
+<%@ page import="com.tcy365.common.BizParam" %>
+<%@ page import="com.tcy365.common.BizShowSelCity" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
@@ -21,10 +22,11 @@
         <link rel="alternate" media="only screen and (max-width:750px)" href="${MetaMobileUrl}"/>
     </c:if>
     <!--修改部分 v 5.0.0 app.css 改成 5.0.0-->
-    <link href="//static.tcy365.com/uc/tcy/static/assets/css/main-v5.0.0.css?v=${ResourceVersion}" rel="stylesheet"
+    <link href="<%= BizParam.getWebResourceUrl()%>/uc/tcy/static/assets/css/main-v5.0.0.css?v=<%=BizParam.getResourceVersion()%>"
+          rel="stylesheet"
           type="text/css"/>
     <meta itemprop="name" content="同城游棋牌官方下载"/>
-    <meta itemprop="image" content="//static.tcy365.com/uc/common/images/logo/logo_v_48.png"/>
+    <meta itemprop="image" content="<%= BizParam.getWebResourceUrl()%>/uc/common/images/logo/logo_v_48.png"/>
     <rapid:block name="headcss"></rapid:block>
     <rapid:block name="headjs"></rapid:block>
 
@@ -131,7 +133,29 @@
         <div class="logo">
             <div><a href="/" target="_blank" title="同城游戏大厅"></a></div>
         </div>
+        <p class="c-r2-p">
+            <c:choose>
+                <c:when test="${ViewBag.ShowWebName == true}">
+                    <a href="/@(currentWeb.WebDomain)/" title="@currentWeb.WebName">@currentWeb.WebName</a>
+                </c:when>
 
+                <c:when test="${BizShowSelCity.ShowSelCity(currentWeb) == false}">
+                    <s></s>
+                </c:when>
+
+
+                <c:when test="${ViewBag.ShowSelCity == true}">
+                    <a href="/selectcity.html" target="_blank" class="c-r2">[选择城市]</a>
+                </c:when>
+                <c:otherwise>
+                    <s2></s2>
+                </c:otherwise>
+
+
+            </c:choose>
+
+
+        </p>
     </div>
 </div>
 <rapid:block name="mainBody"></rapid:block>
@@ -169,19 +193,21 @@
         <a href="https://v.yunaq.com/certificate?domain=www.tcy365.com&from=label" rel="nofollow" target="_blank"><img
                 src="https://aqyzmedia.yunaq.com/labels/label_sm_90030.png" height="37" alt=""></a>
         <a href="javascript:;" rel="nofollow" target="_blank"><img
-                src="//static.tcy365.com/uc/tcy/static/assets/images/2.jpg?v=${BizParam.ResourceVersion}" alt=""></a>
+                src="<%= BizParam.getWebResourceUrl()%>/uc/tcy/static/assets/images/2.jpg?v=<%=BizParam.getResourceVersion()%>"
+                alt=""></a>
         <a href="http://sq.ccm.gov.cn:80//ccnt/sczr/service/business/emark/gameNetTag/F35FC9BEF61352AEE040007F01003007"
            rel="nofollow" target="_blank"><img
-                src="//static.tcy365.com/uc/tcy/static/assets/images/3.jpg?v=${BizParam.ResourceVersion}" alt=""></a>
+                src="<%= BizParam.getWebResourceUrl()%>/uc/tcy/static/assets/images/3.jpg?v=<%=BizParam.getResourceVersion()%>"
+                alt=""></a>
 
     </div>
 </div>
 
-<script src="//static.tcy365.com/??cdn/jquery/1.8.2/jquery.js,cdn/dialog/1.4.0/dialog.js,cdn/messenger/2.0.0/messenger.js,cdn/component/slider/1.0.1/slider.min.js?v=@(BizParam.ResourceVersion)"
+<script src="<%= BizParam.getWebResourceUrl()%>/??cdn/jquery/1.8.2/jquery.js,cdn/dialog/1.4.0/dialog.js,cdn/messenger/2.0.0/messenger.js,cdn/component/slider/1.0.1/slider.min.js?v=<%=BizParam.getResourceVersion()%>"
         type="text/javascript"></script>
 
 <!--修改部分 v 5.0.0 app.js 和 trackevent.js 改成 5.0.0-->
-<script src="//static.tcy365.com/??uc/tcy/static/assets/js/top/1.0.3/top.js,uc/tcy/static/assets/js/1.0.1/banner-slider.js,uc/tcy/static/assets/js/5.0.0/placeholder.js,uc/tcy/static/assets/js/5.0.0/app.js,uc/tcy/static/assets/js/5.0.0/trackevent.js,uc/tcy/static/assets/js/4.8.0/sliderGradual.min.js?v=@(BizParam.ResourceVersion)"></script>
+<script src="<%= BizParam.getWebResourceUrl()%>/??uc/tcy/static/assets/js/top/1.0.3/top.js,uc/tcy/static/assets/js/1.0.1/banner-slider.js,uc/tcy/static/assets/js/5.0.0/placeholder.js,uc/tcy/static/assets/js/5.0.0/app.js,uc/tcy/static/assets/js/5.0.0/trackevent.js,uc/tcy/static/assets/js/4.8.0/sliderGradual.min.js?v=<%=BizParam.getResourceVersion()%>"></script>
 
 
 <rapid:block name="footcss"></rapid:block>

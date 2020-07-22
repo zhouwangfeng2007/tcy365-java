@@ -12,11 +12,12 @@
         <div class="section">
             <ul class="banner-order" id="J_bannerNum"></ul>
             <div class="index-banner-b slider" id="bannerSlide">
+                ${web.getTitle()}
                 <c:choose>
                     <c:when test="${ListHelper.IsEmpty(ListPcBanner)}">
                         <ul class="banner-list" id="J_bannerItems">
                             <li style="opacity: 0; z-index: 1;" class="J_banner1"><img
-                                    src="//static.tcy365.com/uc/tcy/static/assets/images/ac-banner1.jpg?v=${BizParam.ResourceVersion}"
+                                    src="//static.tcy365.com/uc/tcy/static/assets/images/ac-banner1.jpg?v=<%=BizParam.getResourceVersion()%>"
                                     alt="" width="1920px" height="300px"/></li>
                         </ul>
                     </c:when>
@@ -93,7 +94,7 @@
                     <c:choose>
                         <c:when test="${Activity==null||Activity.size()<=0}">
                             <a href="/news/" target="_blank" title="全部同城游资讯">
-                                <img src="//static.tcy365.com/uc/tcy/static/assets/images/news-ad-img.jpg?v=${BizParam.ResourceVersion}"
+                                <img src="//static.tcy365.com/uc/tcy/static/assets/images/news-ad-img.jpg?v=<%=BizParam.getResourceVersion()%>"
                                      width="190px" height="223px">
                             </a>
                         </c:when>
@@ -152,7 +153,7 @@
                     <ul>
                         <li>
                             <a href="http://vip.tcy365.com/" target="_blank" rel="nofollow">
-                                <img src="@(BizParam.WebResourceUrl)/uc/tcy/static/assets/images/vip-p1.jpg?v=@(BizParam.ResourceVersion)"
+                                <img src="//static.tcy365.com/uc/tcy/static/assets/images/vip-p1.jpg?v=<%=BizParam.getResourceVersion()%>"
                                      alt="马上开通蓝钻会员，开始精彩体验吧！" title="马上开通蓝钻会员，开始精彩体验吧！"/>
                             </a>
                         </li>
@@ -175,7 +176,7 @@
                         <h6>张大佛爷</h6>
                         <p class="description">红雪冬青一袭水袖丹衣 </p>
                         <span class="icon-jumpout">→</span>
-                        <img src="//static.tcy365.com/uc/tcy/static/assets/images/mall-item.png?v=${BizParam.ResourceVersion}"
+                        <img src="//static.tcy365.com/uc/tcy/static/assets/images/mall-item.png"
                              alt="" class="mall-item-img"/>
                     </a>
                 </li>
@@ -184,7 +185,7 @@
                         <h6>金粉伊人</h6>
                         <p class="description">红裳如火美人笑 </p>
                         <span class="icon-jumpout">→</span>
-                        <img src="//static.tcy365.com/uc/tcy/static/assets/images/mall-item-2.png?v=@(BizParam.ResourceVersion)"
+                        <img src="//static.tcy365.com/uc/tcy/static/assets/images/mall-item-2.png"
                              alt="" class="mall-item-img"/>
                     </a>
                 </li>
@@ -193,7 +194,7 @@
                         <h6>甜心兔女郎</h6>
                         <p class="description">千娇百媚，天生尤物 </p>
                         <span class="icon-jumpout">→</span>
-                        <img src="//static.tcy365.com/uc/tcy/static/assets/images/mall-item-3.png?v=@(BizParam.ResourceVersion)"
+                        <img src="//static.tcy365.com/uc/tcy/static/assets/images/mall-item-3.png"
                              alt="" class="mall-item-img"/>
                     </a>
                 </li>
@@ -202,7 +203,7 @@
                         <h6>007</h6>
                         <p class="description">我不是别人，我是007 </p>
                         <span class="icon-jumpout">→</span>
-                        <img src="//static.tcy365.com/uc/tcy/static/assets/images/mall-item-4.png?v=@(BizParam.ResourceVersion)"
+                        <img src="//static.tcy365.com/uc/tcy/static/assets/images/mall-item-4.png"
                              alt="" class="mall-item-img"/>
                     </a>
                 </li>

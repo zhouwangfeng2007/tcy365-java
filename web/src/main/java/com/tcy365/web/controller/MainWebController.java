@@ -16,19 +16,20 @@ import java.util.Collection;
 import java.util.List;
 
 @Controller
-public class MainWebController {
+public class MainWebController extends BaseController {
 
     @Autowired
     private ITblWebService ITblWebService;
 
     @RequestMapping(value = "/index.html", method = RequestMethod.GET)
     public String MainWeb(HttpServletRequest request, Model model) {
+        tbl_Web web = getCurrentWeb(request);
 
         return "mainweb.jsp";
     }
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String RootUrl(HttpServletResponse response) {
+    public String RootUrl(HttpServletResponse response, Model model) {
 
         return "selectcity.jsp";
     }

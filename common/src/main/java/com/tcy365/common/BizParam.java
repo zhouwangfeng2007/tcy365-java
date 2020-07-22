@@ -18,6 +18,12 @@ public class BizParam {
         return ConfigHelper.getValue("biz.value.webresourceurl");
     }
 
-    private String mainWebUrl;
+    /**
+     * 前端资源版本
+     * @return
+     */
+    public static String getResourceVersion(){
+        return  ConfigHelper.getValue("env.value.resourceVersion");
+    }
 
 }

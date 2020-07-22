@@ -22,7 +22,7 @@ public class WebCommonInterceptor implements HandlerInterceptor {
     ITblWebService webService;
 
     @Override
-    public boolean preHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o) throws Exception {
+    public boolean preHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object controller) throws Exception {
 
         String uri = httpServletRequest.getRequestURI();
         StringBuffer url = httpServletRequest.getRequestURL();

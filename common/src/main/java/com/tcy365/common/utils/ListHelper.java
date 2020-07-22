@@ -4,6 +4,9 @@ import java.util.List;
 
 public class ListHelper {
     public static boolean IsEmpty(List<?> listSrc){
+        if(listSrc.isEmpty()){
+            return true;
+        }
         if(listSrc==null){
             return true;
         }
