@@ -4,15 +4,13 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib prefix="rapid" uri="http://www.rapid-framework.org.cn/rapid" %>
-
-<%@ include file="Layout/mainwebfx.jsp" %>
-
 <rapid:override name="mainBody">
     <div class="content">
         <div class="section">
             <ul class="banner-order" id="J_bannerNum"></ul>
             <div class="index-banner-b slider" id="bannerSlide">
-                ${web.getTitle()}
+                ${requestScope.web.getTitle()}
+
                 <c:choose>
                     <c:when test="${ListHelper.IsEmpty(ListPcBanner)}">
                         <ul class="banner-list" id="J_bannerItems">
@@ -308,3 +306,4 @@
 </rapid:override>
 
 <%@ include file="Layout/FriendLink.jsp" %>
+<%@ include file="Layout/mainwebfx.jsp" %>

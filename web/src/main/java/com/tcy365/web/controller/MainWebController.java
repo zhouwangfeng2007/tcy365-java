@@ -24,7 +24,8 @@ public class MainWebController extends BaseController {
     @RequestMapping(value = "/index.html", method = RequestMethod.GET)
     public String MainWeb(HttpServletRequest request, Model model) {
         tbl_Web web = getCurrentWeb(request);
-
+request.setAttribute("aaa","12345");
+model.addAttribute("bbb","adasdf");
         return "mainweb.jsp";
     }
 

@@ -161,7 +161,7 @@
 <rapid:block name="mainBody"></rapid:block>
 
 <div id="ConsultingService" class="ConsultingService">
-    <a href="http://talk.tcy365.org:1505/client/?f=2"
+    <a href="http://talk.tcy365.com/client/?f=2"
        class="big-icon J_talk" target="_blank"><i class="talk-title"></i><span class="toggle-btn">&#215;</span></a>
     <span class="small-icon"></span>
 </div>
