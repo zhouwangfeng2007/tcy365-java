@@ -44,7 +44,7 @@
     ,
     <include refid="Blob_Column_List" />
     from tbl_Web
-    where Id = #{WebDomain,jdbcType=VARCHAR}
+    where WebDomain = #{WebDomain,jdbcType=VARCHAR}
   </select>
   <select id="selectAll" resultMap="ResultMapWithBLOBs">
     select

@@ -27,8 +27,12 @@ public class WebCommonInterceptor implements HandlerInterceptor {
         String uri = httpServletRequest.getRequestURI();
         StringBuffer url = httpServletRequest.getRequestURL();
         System.out.println("preHandle,uri=" + uri + ",url=" + url);
+        if(uri.endsWith(".ico")){
+            return false;
+        }
 
         String cookieDomain=  CookieHelper.getCookeiValue(httpServletRequest, ConstantValueDefine.CurrentWebDomain_CookieName);
+
 
         tbl_Web web;
         if ("/index.html".equals(uri)) {

@@ -1,5 +1,6 @@
 <%@ page import="com.tcy365.common.BizParam" %>
 <%@ page import="com.tcy365.common.BizShowSelCity" %>
+<%@ page import="com.tcy365.common.utils.StringHelper" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
@@ -10,11 +11,11 @@
 <head>
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <title>${Title}</title>
+    <title>${web.getTitle()}</title>
     <link rel="shortcut icon" href="${BizParam.getWebResourceUrl()}/uc/common/images/favicon.ico"/>
-    <meta name="keywords" content="${KeyWords}"/>
-    <meta name="description" itemprop="description" content="${Description}"/>
-    <c:if test="${MetaMobileUrl!=''}">
+    <meta name="keywords" content="${web.getKeywords()}"/>
+    <meta name="description" itemprop="description" content="${web.getDescription()}"/>
+    <c:if test='<%=!StringHelper.isNullOrEmpty((String) request.getAttribute("MetaMobileUrl")) %>'>
         <meta name="mobile-agent" content="format=html5;url=${MetaMobileUrl}"/>
         <meta name="applicable-device" content="pc">
         <meta http-equiv="Cache-Control" content="no-siteapp"/>
@@ -32,9 +33,9 @@
 
     <script>
         var TCY_DATASIGN = {
-            ip: '@ViewBag.ClientIp',
-            appSessionId: '@ViewBag.AppSessionId',
-            eventSessionId: '@ViewBag.EventSessionId'
+            ip: '',
+            appSessionId: '',
+            eventSessionId: ''
         };
     </script>
 </head>
@@ -74,12 +75,10 @@
                 </div>
             </div>
         </div>
-        <c:choose>
-            <c:when test="${isSpaceialWeb == false}">
-                <ul class="nav yahei">
-                    <li><a href="${currentWeb.WebDomain!=null ? currentWeb.WebDomain : '/'}"
-                           title="首页" ${SelIndex == 1 ? "class=\"opt\"" : ""}>首页</a></li>
-                    <li>
+        <ul class="nav yahei">
+            <li><a href="${!StringHelper.isNullOrEmpty(web.getWebdomain())  ? web.getWebdomain() : '/'}"
+                   title="首页" ${SelIndex == 1 ? "class=\"opt\"" : ""}>首页</a></li>
+            <li>
                         <span class="more">
                             <a href="/game/" ${SelIndex == 2 ? "class=\"opt\"" : ""} target="_blank" title="游戏">游戏<i
                                     class="icon-more"></i></a>
@@ -90,12 +89,12 @@
                                 <li><a href="/game/casual/" rel="nofollow" target="_blank" title="休闲游戏">休闲游戏</a></li>
                             </ul>
                         </span>
-                    </li>
-                    <li><a href="/app/" ${SelIndex == 3 ? "class=\"opt\"" : ""} target="_blank" title="手游">手游</a></li>
-                    <li><a href="http://www.yaodou.com/" rel="nofollow" target="_blank" title="页游">页游</a></li>
-                    <li><a href="http://pay.tcy365.com/" rel="nofollow" target="_blank" title="充值">充值</a></li>
-                    <li><a href="http://kf.tcy365.com/" rel="nofollow" target="_blank" title="客服">客服</a></li>
-                    <li>
+            </li>
+            <li><a href="/app/" ${SelIndex == 3 ? "class=\"opt\"" : ""} target="_blank" title="手游">手游</a></li>
+            <li><a href="http://www.yaodou.com/" rel="nofollow" target="_blank" title="页游">页游</a></li>
+            <li><a href="http://pay.tcy365.com/" rel="nofollow" target="_blank" title="充值">充值</a></li>
+            <li><a href="http://kf.tcy365.com/" rel="nofollow" target="_blank" title="客服">客服</a></li>
+            <li>
                         <span class="more">
                             <a href="#" title="更多">更多<i class="icon-more"></i></a>
                             <ul class="child-list">
@@ -106,66 +105,24 @@
                                 <li><a href="/yxgl/" target="_blank" title="资讯精选">资讯精选</a></li>
                             </ul>
                         </span>
-                    </li>
-                </ul>
-            </c:when>
-            <c:otherwise>
-                <ul class="nav yahei">
-                    <li><a href="${currentWeb.WebDomain!=null ?  "/${currentWeb.WebDomain}/"  : "/"}"
-                           title="首页" ${SelIndex == 1 ? "class=\"opt\"" : ""}>首页</a></li>
-                    <li><a href="http://kf.tcy365.com/" rel="nofollow" target="_blank" title="客服">客服</a></li>
-                    <li><a href="http://vip.tcy365.com/" rel="nofollow" target="_blank" title="会员">会员</a></li>
-                    <li>
-                        <span class="more">
-                            更多<i class="icon-more"></i>
-                            <ul class="child-list">
-                                <li><a href="http://user.tcy365.com/" rel="nofollow" target="_blank"
-                                       title="用户中心">用户中心</a></li>
-                                <li><a href="/yxgl/" target="_blank" title="资讯精选">资讯精选</a></li>
-                            </ul>
-                        </span>
-                    </li>
-                </ul>
-            </c:otherwise>
-        </c:choose>
-
-
+            </li>
+        </ul>
         <div class="logo">
             <div><a href="/" target="_blank" title="同城游戏大厅"></a></div>
         </div>
         <p class="c-r2-p">
-            <c:choose>
-                <c:when test="${ViewBag.ShowWebName == true}">
-                    <a href="/@(currentWeb.WebDomain)/" title="@currentWeb.WebName">@currentWeb.WebName</a>
-                </c:when>
-
-                <c:when test="${BizShowSelCity.ShowSelCity(currentWeb) == false}">
-                    <s></s>
-                </c:when>
-
-
-                <c:when test="${ViewBag.ShowSelCity == true}">
-                    <a href="/selectcity.html" target="_blank" class="c-r2">[选择城市]</a>
-                </c:when>
-                <c:otherwise>
-                    <s2></s2>
-                </c:otherwise>
-
-
-            </c:choose>
-
-
+            <a href="/${web.getWebdomain()}/" title="${web.getWebname()}">${web.getWebname()}</a>
+            <a href="/selectcity.html" target="_blank" class="c-r2">[选择城市]</a>
         </p>
     </div>
 </div>
 <rapid:block name="mainBody"></rapid:block>
-
+<%@ include file="FriendLink.jsp" %>
 <div id="ConsultingService" class="ConsultingService">
     <a href="http://talk.tcy365.com/client/?f=2"
        class="big-icon J_talk" target="_blank"><i class="talk-title"></i><span class="toggle-btn">&#215;</span></a>
     <span class="small-icon"></span>
 </div>
-
 <div class="footer">
     <div class="Anti-addiction">
         <p>抵制不良游戏 拒绝盗版游戏 注意自我保护 谨防受骗上当 适度游戏益脑 沉迷游戏伤身 合理安排时间 享受健康生活 —— 《健康游戏忠告》</p>

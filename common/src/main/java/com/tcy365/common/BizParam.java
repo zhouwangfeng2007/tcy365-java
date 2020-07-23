@@ -26,4 +26,12 @@ public class BizParam {
         return  ConfigHelper.getValue("env.value.resourceVersion");
     }
 
+
+    /**
+     * 移动站
+     * @return
+     */
+    public static String getMobileWebUrl(){
+        return ConfigHelper.getValue("biz.value.MobileWebUrl");
+    }
 }

@@ -1,7 +1,10 @@
 package com.tcy365.web.controller;
 
 
+import com.tcy365.common.BizParam;
+import com.tcy365.entity.tcy365webdb.tbl_PCBanner;
 import com.tcy365.entity.tcy365webdb.tbl_Web;
+import com.tcy365.service.IPcBannerService;
 import com.tcy365.service.ITblWebService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,13 +22,15 @@ import java.util.List;
 public class MainWebController extends BaseController {
 
     @Autowired
-    private ITblWebService ITblWebService;
+    private IPcBannerService pcBannerService;
 
     @RequestMapping(value = "/index.html", method = RequestMethod.GET)
     public String MainWeb(HttpServletRequest request, Model model) {
         tbl_Web web = getCurrentWeb(request);
-request.setAttribute("aaa","12345");
-model.addAttribute("bbb","adasdf");
+        request.setAttribute("MetaMobileUrl", BizParam.getMobileWebUrl());
+        request.setAttribute("SelIndex", 1);
+        List<tbl_PCBanner> listPcBanner = pcBannerService.selectByWebId(web.getId());
+        request.setAttribute("ListPcBanner", listPcBanner);
         return "mainweb.jsp";
     }
 

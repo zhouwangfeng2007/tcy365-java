@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tcy365.dao.tcy365webdb.tbl_PCBannerMapper">
+  <resultMap id="BaseResultMap" type="com.tcy365.entity.tcy365webdb.tbl_PCBanner">
+    <id column="Id" jdbcType="INTEGER" property="id" />
+    <result column="BannerName" jdbcType="VARCHAR" property="bannername" />
+    <result column="ImageRelativePath" jdbcType="VARCHAR" property="imagerelativepath" />
+    <result column="LinkUrl" jdbcType="VARCHAR" property="linkurl" />
+    <result column="ImageTag" jdbcType="VARCHAR" property="imagetag" />
+    <result column="WebSiteType" jdbcType="INTEGER" property="websitetype" />
+    <result column="tblWebId" jdbcType="INTEGER" property="tblwebid" />
+    <result column="SortID" jdbcType="INTEGER" property="sortid" />
+    <result column="LastUpdateTime" jdbcType="TIMESTAMP" property="lastupdatetime" />
+    <result column="ValidBeginTime" jdbcType="TIMESTAMP" property="validbegintime" />
+    <result column="ValidEndTime" jdbcType="TIMESTAMP" property="validendtime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    Id, BannerName, ImageRelativePath, LinkUrl, ImageTag, WebSiteType, tblWebId, SortID, 
+    LastUpdateTime, ValidBeginTime, ValidEndTime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tbl_PCBanner
+    where Id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectByWebId"   resultMap="BaseResultMap">
+    select  top 5
+    <include refid="Base_Column_List" />
+    from tbl_PCBanner
+    where tblWebId = #{tblWebId,jdbcType=INTEGER}  and ValidBeginTime&lt;=getdate() and ValidEndTime&gt;=getdate() order by SortID desc
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tbl_PCBanner
+    where Id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.tcy365.entity.tcy365webdb.tbl_PCBanner">
+    insert into tbl_PCBanner (Id, BannerName, ImageRelativePath, 
+      LinkUrl, ImageTag, WebSiteType, 
+      tblWebId, SortID, LastUpdateTime, 
+      ValidBeginTime, ValidEndTime)
+    values (#{id,jdbcType=INTEGER}, #{bannername,jdbcType=VARCHAR}, #{imagerelativepath,jdbcType=VARCHAR}, 
+      #{linkurl,jdbcType=VARCHAR}, #{imagetag,jdbcType=VARCHAR}, #{websitetype,jdbcType=INTEGER}, 
+      #{tblwebid,jdbcType=INTEGER}, #{sortid,jdbcType=INTEGER}, #{lastupdatetime,jdbcType=TIMESTAMP}, 
+      #{validbegintime,jdbcType=TIMESTAMP}, #{validendtime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.tcy365.entity.tcy365webdb.tbl_PCBanner">
+    insert into tbl_PCBanner
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        Id,
+      </if>
+      <if test="bannername != null">
+        BannerName,
+      </if>
+      <if test="imagerelativepath != null">
+        ImageRelativePath,
+      </if>
+      <if test="linkurl != null">
+        LinkUrl,
+      </if>
+      <if test="imagetag != null">
+        ImageTag,
+      </if>
+      <if test="websitetype != null">
+        WebSiteType,
+      </if>
+      <if test="tblwebid != null">
+        tblWebId,
+      </if>
+      <if test="sortid != null">
+        SortID,
+      </if>
+      <if test="lastupdatetime != null">
+        LastUpdateTime,
+      </if>
+      <if test="validbegintime != null">
+        ValidBeginTime,
+      </if>
+      <if test="validendtime != null">
+        ValidEndTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="bannername != null">
+        #{bannername,jdbcType=VARCHAR},
+      </if>
+      <if test="imagerelativepath != null">
+        #{imagerelativepath,jdbcType=VARCHAR},
+      </if>
+      <if test="linkurl != null">
+        #{linkurl,jdbcType=VARCHAR},
+      </if>
+      <if test="imagetag != null">
+        #{imagetag,jdbcType=VARCHAR},
+      </if>
+      <if test="websitetype != null">
+        #{websitetype,jdbcType=INTEGER},
+      </if>
+      <if test="tblwebid != null">
+        #{tblwebid,jdbcType=INTEGER},
+      </if>
+      <if test="sortid != null">
+        #{sortid,jdbcType=INTEGER},
+      </if>
+      <if test="lastupdatetime != null">
+        #{lastupdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="validbegintime != null">
+        #{validbegintime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="validendtime != null">
+        #{validendtime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.tcy365.entity.tcy365webdb.tbl_PCBanner">
+    update tbl_PCBanner
+    <set>
+      <if test="bannername != null">
+        BannerName = #{bannername,jdbcType=VARCHAR},
+      </if>
+      <if test="imagerelativepath != null">
+        ImageRelativePath = #{imagerelativepath,jdbcType=VARCHAR},
+      </if>
+      <if test="linkurl != null">
+        LinkUrl = #{linkurl,jdbcType=VARCHAR},
+      </if>
+      <if test="imagetag != null">
+        ImageTag = #{imagetag,jdbcType=VARCHAR},
+      </if>
+      <if test="websitetype != null">
+        WebSiteType = #{websitetype,jdbcType=INTEGER},
+      </if>
+      <if test="tblwebid != null">
+        tblWebId = #{tblwebid,jdbcType=INTEGER},
+      </if>
+      <if test="sortid != null">
+        SortID = #{sortid,jdbcType=INTEGER},
+      </if>
+      <if test="lastupdatetime != null">
+        LastUpdateTime = #{lastupdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="validbegintime != null">
+        ValidBeginTime = #{validbegintime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="validendtime != null">
+        ValidEndTime = #{validendtime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where Id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.tcy365.entity.tcy365webdb.tbl_PCBanner">
+    update tbl_PCBanner
+    set BannerName = #{bannername,jdbcType=VARCHAR},
+      ImageRelativePath = #{imagerelativepath,jdbcType=VARCHAR},
+      LinkUrl = #{linkurl,jdbcType=VARCHAR},
+      ImageTag = #{imagetag,jdbcType=VARCHAR},
+      WebSiteType = #{websitetype,jdbcType=INTEGER},
+      tblWebId = #{tblwebid,jdbcType=INTEGER},
+      SortID = #{sortid,jdbcType=INTEGER},
+      LastUpdateTime = #{lastupdatetime,jdbcType=TIMESTAMP},
+      ValidBeginTime = #{validbegintime,jdbcType=TIMESTAMP},
+      ValidEndTime = #{validendtime,jdbcType=TIMESTAMP}
+    where Id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,3 +1,5 @@
+<%@ page import="com.tcy365.common.utils.ListHelper" %>
+<%@ page import="java.util.List" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -9,10 +11,8 @@
         <div class="section">
             <ul class="banner-order" id="J_bannerNum"></ul>
             <div class="index-banner-b slider" id="bannerSlide">
-                ${requestScope.web.getTitle()}
-
                 <c:choose>
-                    <c:when test="${ListHelper.IsEmpty(ListPcBanner)}">
+                    <c:when test='<%= ListHelper.IsEmpty((List<?>) request.getAttribute("ListPcBanner") )%>'>
                         <ul class="banner-list" id="J_bannerItems">
                             <li style="opacity: 0; z-index: 1;" class="J_banner1"><img
                                     src="//static.tcy365.com/uc/tcy/static/assets/images/ac-banner1.jpg?v=<%=BizParam.getResourceVersion()%>"
@@ -305,5 +305,5 @@
     </div>
 </rapid:override>
 
-<%@ include file="Layout/FriendLink.jsp" %>
+
 <%@ include file="Layout/mainwebfx.jsp" %>
