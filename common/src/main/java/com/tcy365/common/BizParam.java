@@ -8,8 +8,6 @@ import java.util.Properties;
 
 public class BizParam {
 
-    private String webResourceUrl;
-
     /**
      * 获取配置值
      * @return

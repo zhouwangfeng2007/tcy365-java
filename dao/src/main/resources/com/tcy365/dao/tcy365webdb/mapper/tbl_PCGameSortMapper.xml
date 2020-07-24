@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tcy365.dao.tcy365webdb.tbl_PCGameSortMapper">
+  <resultMap id="BaseResultMap" type="com.tcy365.entity.tcy365webdb.tbl_PCGameSort">
+    <id column="Id" jdbcType="INTEGER" property="id" />
+    <result column="tblWebId" jdbcType="INTEGER" property="tblwebid" />
+    <result column="GameId" jdbcType="INTEGER" property="gameid" />
+    <result column="GameShort" jdbcType="VARCHAR" property="gameshort" />
+    <result column="GameName" jdbcType="VARCHAR" property="gamename" />
+    <result column="SortType" jdbcType="INTEGER" property="sorttype" />
+    <result column="SortID" jdbcType="INTEGER" property="sortid" />
+    <result column="LastUpdateTime" jdbcType="TIMESTAMP" property="lastupdatetime" />
+    <result column="OnLineNum" jdbcType="INTEGER" property="onlinenum" />
+    <result column="tblGdpId" jdbcType="INTEGER" property="tblgdpid" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    Id, tblWebId, GameId, GameShort, GameName, SortType, SortID, LastUpdateTime, OnLineNum, 
+    tblGdpId
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tbl_PCGameSort
+    where Id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="GetPcGameSortBy" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from tbl_PCGameSort
+    where tblWebId = #{tblWebId,jdbcType=INTEGER} and SortID=#{sortId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tbl_PCGameSort
+    where Id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.tcy365.entity.tcy365webdb.tbl_PCGameSort">
+    insert into tbl_PCGameSort (Id, tblWebId, GameId, 
+      GameShort, GameName, SortType, 
+      SortID, LastUpdateTime, OnLineNum, 
+      tblGdpId)
+    values (#{id,jdbcType=INTEGER}, #{tblwebid,jdbcType=INTEGER}, #{gameid,jdbcType=INTEGER}, 
+      #{gameshort,jdbcType=VARCHAR}, #{gamename,jdbcType=VARCHAR}, #{sorttype,jdbcType=INTEGER}, 
+      #{sortid,jdbcType=INTEGER}, #{lastupdatetime,jdbcType=TIMESTAMP}, #{onlinenum,jdbcType=INTEGER}, 
+      #{tblgdpid,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.tcy365.entity.tcy365webdb.tbl_PCGameSort">
+    insert into tbl_PCGameSort
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        Id,
+      </if>
+      <if test="tblwebid != null">
+        tblWebId,
+      </if>
+      <if test="gameid != null">
+        GameId,
+      </if>
+      <if test="gameshort != null">
+        GameShort,
+      </if>
+      <if test="gamename != null">
+        GameName,
+      </if>
+      <if test="sorttype != null">
+        SortType,
+      </if>
+      <if test="sortid != null">
+        SortID,
+      </if>
+      <if test="lastupdatetime != null">
+        LastUpdateTime,
+      </if>
+      <if test="onlinenum != null">
+        OnLineNum,
+      </if>
+      <if test="tblgdpid != null">
+        tblGdpId,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="tblwebid != null">
+        #{tblwebid,jdbcType=INTEGER},
+      </if>
+      <if test="gameid != null">
+        #{gameid,jdbcType=INTEGER},
+      </if>
+      <if test="gameshort != null">
+        #{gameshort,jdbcType=VARCHAR},
+      </if>
+      <if test="gamename != null">
+        #{gamename,jdbcType=VARCHAR},
+      </if>
+      <if test="sorttype != null">
+        #{sorttype,jdbcType=INTEGER},
+      </if>
+      <if test="sortid != null">
+        #{sortid,jdbcType=INTEGER},
+      </if>
+      <if test="lastupdatetime != null">
+        #{lastupdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="onlinenum != null">
+        #{onlinenum,jdbcType=INTEGER},
+      </if>
+      <if test="tblgdpid != null">
+        #{tblgdpid,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.tcy365.entity.tcy365webdb.tbl_PCGameSort">
+    update tbl_PCGameSort
+    <set>
+      <if test="tblwebid != null">
+        tblWebId = #{tblwebid,jdbcType=INTEGER},
+      </if>
+      <if test="gameid != null">
+        GameId = #{gameid,jdbcType=INTEGER},
+      </if>
+      <if test="gameshort != null">
+        GameShort = #{gameshort,jdbcType=VARCHAR},
+      </if>
+      <if test="gamename != null">
+        GameName = #{gamename,jdbcType=VARCHAR},
+      </if>
+      <if test="sorttype != null">
+        SortType = #{sorttype,jdbcType=INTEGER},
+      </if>
+      <if test="sortid != null">
+        SortID = #{sortid,jdbcType=INTEGER},
+      </if>
+      <if test="lastupdatetime != null">
+        LastUpdateTime = #{lastupdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="onlinenum != null">
+        OnLineNum = #{onlinenum,jdbcType=INTEGER},
+      </if>
+      <if test="tblgdpid != null">
+        tblGdpId = #{tblgdpid,jdbcType=INTEGER},
+      </if>
+    </set>
+    where Id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.tcy365.entity.tcy365webdb.tbl_PCGameSort">
+    update tbl_PCGameSort
+    set tblWebId = #{tblwebid,jdbcType=INTEGER},
+      GameId = #{gameid,jdbcType=INTEGER},
+      GameShort = #{gameshort,jdbcType=VARCHAR},
+      GameName = #{gamename,jdbcType=VARCHAR},
+      SortType = #{sorttype,jdbcType=INTEGER},
+      SortID = #{sortid,jdbcType=INTEGER},
+      LastUpdateTime = #{lastupdatetime,jdbcType=TIMESTAMP},
+      OnLineNum = #{onlinenum,jdbcType=INTEGER},
+      tblGdpId = #{tblgdpid,jdbcType=INTEGER}
+    where Id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

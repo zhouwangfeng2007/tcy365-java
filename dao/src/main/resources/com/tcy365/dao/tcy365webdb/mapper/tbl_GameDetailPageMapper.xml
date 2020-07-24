@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tcy365.dao.tcy365webdb.tbl_GameDetailPageMapper">
+  <resultMap id="BaseResultMap" type="com.tcy365.entity.tcy365webdb.tbl_GameDetailPage">
+    <id column="Id" jdbcType="INTEGER" property="id" />
+    <result column="GameId" jdbcType="INTEGER" property="gameid" />
+    <result column="GameShort" jdbcType="VARCHAR" property="gameshort" />
+    <result column="GameName" jdbcType="VARCHAR" property="gamename" />
+    <result column="Area" jdbcType="VARCHAR" property="area" />
+    <result column="Title" jdbcType="VARCHAR" property="title" />
+    <result column="KeyWords" jdbcType="VARCHAR" property="keywords" />
+    <result column="Description_" jdbcType="VARCHAR" property="description" />
+    <result column="IsDefault" jdbcType="INTEGER" property="isdefault" />
+    <result column="IsVisible" jdbcType="INTEGER" property="isvisible" />
+    <result column="IsAudit" jdbcType="INTEGER" property="isaudit" />
+    <result column="LastUpdateTime" jdbcType="TIMESTAMP" property="lastupdatetime" />
+    <result column="GameDetail2" jdbcType="VARCHAR" property="gamedetail2" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.tcy365.entity.tcy365webdb.tbl_GameDetailPage">
+    <result column="GameDetail" jdbcType="CLOB" property="gamedetail" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    Id, GameId, GameShort, GameName, Area, Title, KeyWords, Description_, IsDefault, 
+    IsVisible, IsAudit, LastUpdateTime, GameDetail2
+  </sql>
+  <sql id="Blob_Column_List">
+    GameDetail
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from tbl_GameDetailPage
+    where Id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tbl_GameDetailPage
+    where Id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.tcy365.entity.tcy365webdb.tbl_GameDetailPage">
+    insert into tbl_GameDetailPage (Id, GameId, GameShort, 
+      GameName, Area, Title, 
+      KeyWords, Description_, IsDefault, 
+      IsVisible, IsAudit, LastUpdateTime, 
+      GameDetail2, GameDetail)
+    values (#{id,jdbcType=INTEGER}, #{gameid,jdbcType=INTEGER}, #{gameshort,jdbcType=VARCHAR}, 
+      #{gamename,jdbcType=VARCHAR}, #{area,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, 
+      #{keywords,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, #{isdefault,jdbcType=INTEGER}, 
+      #{isvisible,jdbcType=INTEGER}, #{isaudit,jdbcType=INTEGER}, #{lastupdatetime,jdbcType=TIMESTAMP}, 
+      #{gamedetail2,jdbcType=VARCHAR}, #{gamedetail,jdbcType=CLOB})
+  </insert>
+  <insert id="insertSelective" parameterType="com.tcy365.entity.tcy365webdb.tbl_GameDetailPage">
+    insert into tbl_GameDetailPage
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        Id,
+      </if>
+      <if test="gameid != null">
+        GameId,
+      </if>
+      <if test="gameshort != null">
+        GameShort,
+      </if>
+      <if test="gamename != null">
+        GameName,
+      </if>
+      <if test="area != null">
+        Area,
+      </if>
+      <if test="title != null">
+        Title,
+      </if>
+      <if test="keywords != null">
+        KeyWords,
+      </if>
+      <if test="description != null">
+        Description_,
+      </if>
+      <if test="isdefault != null">
+        IsDefault,
+      </if>
+      <if test="isvisible != null">
+        IsVisible,
+      </if>
+      <if test="isaudit != null">
+        IsAudit,
+      </if>
+      <if test="lastupdatetime != null">
+        LastUpdateTime,
+      </if>
+      <if test="gamedetail2 != null">
+        GameDetail2,
+      </if>
+      <if test="gamedetail != null">
+        GameDetail,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="gameid != null">
+        #{gameid,jdbcType=INTEGER},
+      </if>
+      <if test="gameshort != null">
+        #{gameshort,jdbcType=VARCHAR},
+      </if>
+      <if test="gamename != null">
+        #{gamename,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null">
+        #{area,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="keywords != null">
+        #{keywords,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="isdefault != null">
+        #{isdefault,jdbcType=INTEGER},
+      </if>
+      <if test="isvisible != null">
+        #{isvisible,jdbcType=INTEGER},
+      </if>
+      <if test="isaudit != null">
+        #{isaudit,jdbcType=INTEGER},
+      </if>
+      <if test="lastupdatetime != null">
+        #{lastupdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gamedetail2 != null">
+        #{gamedetail2,jdbcType=VARCHAR},
+      </if>
+      <if test="gamedetail != null">
+        #{gamedetail,jdbcType=CLOB},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.tcy365.entity.tcy365webdb.tbl_GameDetailPage">
+    update tbl_GameDetailPage
+    <set>
+      <if test="gameid != null">
+        GameId = #{gameid,jdbcType=INTEGER},
+      </if>
+      <if test="gameshort != null">
+        GameShort = #{gameshort,jdbcType=VARCHAR},
+      </if>
+      <if test="gamename != null">
+        GameName = #{gamename,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null">
+        Area = #{area,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null">
+        Title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="keywords != null">
+        KeyWords = #{keywords,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        Description_ = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="isdefault != null">
+        IsDefault = #{isdefault,jdbcType=INTEGER},
+      </if>
+      <if test="isvisible != null">
+        IsVisible = #{isvisible,jdbcType=INTEGER},
+      </if>
+      <if test="isaudit != null">
+        IsAudit = #{isaudit,jdbcType=INTEGER},
+      </if>
+      <if test="lastupdatetime != null">
+        LastUpdateTime = #{lastupdatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gamedetail2 != null">
+        GameDetail2 = #{gamedetail2,jdbcType=VARCHAR},
+      </if>
+      <if test="gamedetail != null">
+        GameDetail = #{gamedetail,jdbcType=CLOB},
+      </if>
+    </set>
+    where Id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.tcy365.entity.tcy365webdb.tbl_GameDetailPage">
+    update tbl_GameDetailPage
+    set GameId = #{gameid,jdbcType=INTEGER},
+      GameShort = #{gameshort,jdbcType=VARCHAR},
+      GameName = #{gamename,jdbcType=VARCHAR},
+      Area = #{area,jdbcType=VARCHAR},
+      Title = #{title,jdbcType=VARCHAR},
+      KeyWords = #{keywords,jdbcType=VARCHAR},
+      Description_ = #{description,jdbcType=VARCHAR},
+      IsDefault = #{isdefault,jdbcType=INTEGER},
+      IsVisible = #{isvisible,jdbcType=INTEGER},
+      IsAudit = #{isaudit,jdbcType=INTEGER},
+      LastUpdateTime = #{lastupdatetime,jdbcType=TIMESTAMP},
+      GameDetail2 = #{gamedetail2,jdbcType=VARCHAR},
+      GameDetail = #{gamedetail,jdbcType=CLOB}
+    where Id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.tcy365.entity.tcy365webdb.tbl_GameDetailPage">
+    update tbl_GameDetailPage
+    set GameId = #{gameid,jdbcType=INTEGER},
+      GameShort = #{gameshort,jdbcType=VARCHAR},
+      GameName = #{gamename,jdbcType=VARCHAR},
+      Area = #{area,jdbcType=VARCHAR},
+      Title = #{title,jdbcType=VARCHAR},
+      KeyWords = #{keywords,jdbcType=VARCHAR},
+      Description_ = #{description,jdbcType=VARCHAR},
+      IsDefault = #{isdefault,jdbcType=INTEGER},
+      IsVisible = #{isvisible,jdbcType=INTEGER},
+      IsAudit = #{isaudit,jdbcType=INTEGER},
+      LastUpdateTime = #{lastupdatetime,jdbcType=TIMESTAMP},
+      GameDetail2 = #{gamedetail2,jdbcType=VARCHAR}
+    where Id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
