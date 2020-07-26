@@ -10,6 +10,7 @@ public class BizParam {
 
     /**
      * 获取配置值
+     *
      * @return
      */
     public static String getWebResourceUrl() {
@@ -18,18 +19,28 @@ public class BizParam {
 
     /**
      * 前端资源版本
+     *
      * @return
      */
-    public static String getResourceVersion(){
-        return  ConfigHelper.getValue("env.value.resourceVersion");
+    public static String getResourceVersion() {
+        return ConfigHelper.getValue("env.value.resourceVersion");
     }
 
 
     /**
      * 移动站
+     *
      * @return
      */
-    public static String getMobileWebUrl(){
+    public static String getMobileWebUrl() {
         return ConfigHelper.getValue("biz.value.MobileWebUrl");
+    }
+
+    /**
+     * IP地址查询接口
+     * @return
+     */
+    public static String getIPASUrl() {
+        return ConfigHelper.getValue("externalService.url.ipas");
     }
 }

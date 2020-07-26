@@ -1,6 +1,4 @@
 package com.tcy365.adm.controller;
-
-
 import com.tcy365.common.SelfCheckResultItem;
 import com.tcy365.dao.tcy365webdb.tbl_WebMapper;
 import com.tcy365.entity.tcy365webdb.tbl_Web;
@@ -19,20 +17,14 @@ import java.util.List;
 @RequestMapping("/selfcheck")
 public class SelfCheckController {
 
-//    @Autowired
-//    private ITblWebService tblWebServiceImpl;
-
     @Autowired
     private tbl_WebMapper tbl_webMapper;
-
 
     @RequestMapping(value = "/checkall", method = RequestMethod.GET)
     @ResponseBody
     public List<SelfCheckResultItem> checkAll() {
         List<SelfCheckResultItem> listResult = new ArrayList<>();
         listResult.add(getCurrentSysTime());
-
-
         listResult.add(checkDb());
         return listResult;
     }

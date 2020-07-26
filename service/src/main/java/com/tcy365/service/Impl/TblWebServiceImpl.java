@@ -30,4 +30,9 @@ public class TblWebServiceImpl implements ITblWebService {
     public List<tbl_Web> getAll() {
         return tbl_webMapper.selectAll();
     }
+
+    @Override
+    public List<tbl_Web> selectByPage(Integer pageIndex, Integer pageSize) {
+        return tbl_webMapper.selectByPage(pageIndex, pageSize);
+    }
 }

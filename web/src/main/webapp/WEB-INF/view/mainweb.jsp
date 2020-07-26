@@ -21,16 +21,16 @@
                     </c:when>
                     <c:otherwise>
                         <ul class="banner-list" id="J_bannerItems">
-                            <c:forEach items="${ListPcBanner}" var="b" varStatus="xh">
+                            <c:forEach items="${ListPcBanner}" var="b" varStatus="idx">
                                 <c:choose>
                                     <c:when test="${b.LinkUrl==null||b.LinkUrl==''}">
-                                        <li style="opacity: 0; z-index: 1;" class="J_banner${xh.index}"><img
+                                        <li style="opacity: 0; z-index: 1;" class="J_banner${idx.index}"><img
                                                 src="${b.ImageRelativePath}"
                                                 alt="${b.ImageTag}" title="${b.ImageTag}"
                                                 width="1920" height="300"/></li>
                                     </c:when>
                                     <c:otherwise>
-                                        <li style="opacity: 0; z-index: 1;" class="J_banner${xh.index}"><a
+                                        <li style="opacity: 0; z-index: 1;" class="J_banner${idx.index}"><a
                                                 href="${b.LinkUrl}"><img
                                                 src="${b.ImageRelativePath}" alt="${b.ImageTag}" title="${b.ImageTag}"
                                                 width="1920" height="300"/></a>
@@ -48,7 +48,7 @@
                     <a href="javascript:;">手机版下载</a>
                 </h3>
                 <ul class="download-box-list" style="display: block;">
-                    <a href="/hall/downloadhall.html?webid=@Model.CurrentWeb.Id" id="btnhall2" rel="nofollow"
+                    <a href="/hall/downloadhall.html?webid=${web.Id}" id="btnhall2" rel="nofollow"
                        class="download-btn J_download-btn" title="同城游大厅(电脑版)">2亿人的选择</a>
                     <p class="download-info">版本：V28.5 大小：13.8M 更新时间：2017-10-08</p>
                 </ul>

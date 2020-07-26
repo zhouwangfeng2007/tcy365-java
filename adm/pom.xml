@@ -42,11 +42,6 @@
       <version>1.2</version>
     </dependency>
     <dependency>
-      <groupId>commons-logging</groupId>
-      <artifactId>commons-logging-api</artifactId>
-      <version>1.1</version>
-    </dependency>
-    <dependency>
       <groupId>javax.servlet</groupId>
       <artifactId>javax.servlet-api</artifactId>
       <version>3.1.0</version>
@@ -171,6 +166,32 @@
       <groupId>com.github.pagehelper</groupId>
       <artifactId>pagehelper</artifactId>
       <version>4.2.1</version>
+    </dependency>
+
+    <!-- https://mvnrepository.com/artifact/javax.xml.rpc/javax.xml.rpc-api -->
+    <dependency>
+      <groupId>javax.xml.rpc</groupId>
+      <artifactId>javax.xml.rpc-api</artifactId>
+      <version>1.1.2</version>
+    </dependency>
+
+    <!-- https://mvnrepository.com/artifact/commons-discovery/commons-discovery -->
+    <dependency>
+      <groupId>commons-discovery</groupId>
+      <artifactId>commons-discovery</artifactId>
+      <version>0.2</version>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/org.apache.axis2/axis2-saaj -->
+    <dependency>
+      <groupId>org.apache.axis2</groupId>
+      <artifactId>axis2-saaj</artifactId>
+      <version>1.7.6</version>
+    </dependency>
+    <dependency>
+      <groupId>groupId</groupId>
+      <artifactId>externalService</artifactId>
+      <version>1.0-SNAPSHOT</version>
+      <scope>compile</scope>
     </dependency>
   </dependencies>
 

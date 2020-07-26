@@ -17,4 +17,6 @@ public interface ITblWebService {
    public tbl_Web getWebByDomain(String webDomain);
 
    public List<tbl_Web> getAll();
+
+   public List<tbl_Web> selectByPage(Integer pageIndex,Integer pageSize);
 }

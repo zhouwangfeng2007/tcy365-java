@@ -3,14 +3,15 @@ package com.tcy365.common.utils;
 import java.util.List;
 
 public class ListHelper {
-    public static boolean IsEmpty(List<?> listSrc){
-        if(listSrc.isEmpty()){
+    public static boolean IsEmpty(List<?> listSrc) {
+        if (listSrc == null) {
             return true;
         }
-        if(listSrc==null){
+        if (listSrc.isEmpty()) {
             return true;
         }
-        if(listSrc.size()<=0){
+
+        if (listSrc.size() <= 0) {
             return true;
         }
         return false;

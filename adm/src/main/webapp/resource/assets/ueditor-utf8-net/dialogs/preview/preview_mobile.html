@@ -1,0 +1,255 @@
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>预览资讯</title>
+    <meta name="keywords" content="gbj" />
+    <meta name="description" content="1123" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="applicable-device" content="mobile" />
+        <meta http-equiv="Cache-Control" content="no-siteapp" />
+        <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="yes" name="apple-touch-fullscreen" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta content="email=no" name="format-detection" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta name="wap-font-scale" content="no" />
+    <meta name="author" content="m.tcy365.com" />
+    <meta name="copyright" content="畅唐网络版权所有©2004-2018" />
+      <script>
+                   (function (win) {
+                       var doc = win.document;
+                       var psdWidth = 750;
+                       var tid;
+                       var throttleTime = 300;
+                       var Dpr = 1,
+                               uAgent = window.navigator.userAgent;
+                       var isIOS = uAgent.match(/iphone/i);
+                       var isYIXIN = uAgent.match(/yixin/i);
+                       var is2345 = uAgent.match(/Mb2345/i);
+                       var ishaosou = uAgent.match(/mso_app/i);
+                       var isSogou = uAgent.match(/sogoumobilebrowser/ig);
+                       var isLiebao = uAgent.match(/liebaofast/i);
+                       var isGnbr = uAgent.match(/GNBR/i);
+                       var metaEl = doc.querySelector('meta[name="viewport"]');
+                       if (!metaEl) {
+                           metaEl = doc.createElement('meta');
+                           metaEl.setAttribute('name', 'viewport');
+                           doc.head.appendChild(metaEl);
+                       }
+                       metaEl.setAttribute('content', 'width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1,minimum-scale=1');
+
+                       function resizeRem() {
+                           var wWidth = (screen.width > 0) ? (window.innerWidth >= screen.width || window.innerWidth == 0) ? screen.width :
+                                           window.innerWidth : window.innerWidth,
+                                   wDpr, wFsize;
+                           var wHeight = (screen.height > 0) ? (window.innerHeight >= screen.height || window.innerHeight == 0) ?
+                                   screen.height : window.innerHeight : window.innerHeight;
+                           if (window.devicePixelRatio) {
+                               wDpr = window.devicePixelRatio;
+                           } else {
+                               wDpr = isIOS ? wWidth > 818 ? 3 : wWidth > 480 ? 2 : 1 : 1;
+                           }
+                           if (isIOS) {
+                               wWidth = screen.width;
+                               wHeight = screen.height;
+                           }
+                          
+                           wFsize = wWidth > 1080 ? 144 : wWidth / 7.5;
+                           wFsize = wFsize < 60 ? wFsize : 60;
+                         
+                           window.screenWidth_ = wWidth;
+                           document.getElementsByTagName('html')[0].style.fontSize = wFsize + 'px';
+                       }
+                       win.addEventListener('ready', function () {
+                           console.log('ready');
+                           resizeRem();
+                       }, false);
+                       win.addEventListener('onload', function () {
+                           clearTimeout(tid);
+                           tid = setTimeout(resizeRem, throttleTime);
+                       }, false);
+                       win.addEventListener('resize', function () {
+                           clearTimeout(tid);
+                           tid = setTimeout(resizeRem, throttleTime);
+                       }, false);
+                       win.addEventListener('pageshow', function (e) {
+                           if (e.persisted) {
+                               clearTimeout(tid);
+                               tid = setTimeout(resizeRem, throttleTime);
+                           }
+                       }, false);
+                       resizeRem();
+                       if (doc.readyState === 'complete') {
+                           resizeRem();
+                       } else {
+                           doc.addEventListener('DOMContentLoaded', function (e) {
+                               resizeRem();
+                           }, false);
+                       }
+                   })(window);
+               </script>
+
+    
+
+    <link rel="stylesheet" href="asset/new-details.min.css" />
+
+</head>
+<body>
+    <header class="sub-header">
+        
+        <div class="left">
+                <a href="javascript:history.back();" title="">
+                    <i class="iconfont icon-fanhui"></i>
+                </a>
+                <em></em>
+        </div>
+        
+        <div class="nav">
+           <a   title="首页">首页</a>
+                <a  title="分类">分类</a>
+                <a  rel="nofollow" title="热门">热门</a>
+                <a title="资讯">资讯</a>
+                  <a class="search" title="搜索" ><i></i></a>
+          
+        </div>
+      
+    </header>
+    
+
+<section class="newDetails border" >
+        <div class="hd">
+            <h3 id="title">
+                
+            </h3>
+            <div class='des'>
+                <div class="time">时间：2017-08-31 </div>
+            </div>
+        </div>
+        <div class="bd" id='preview'>
+            
+        </div>
+</section>
+    <section class="recommend module" id="jq_recommend">
+        <div class="hd">
+            <h3>热门推荐</h3>
+        </div>
+        <div class="bd">
+            <ul>
+                    <li>
+                        <a  class="game-icon" title="斗地主(含单机）">
+                            <img src="asset/zgda_115.png" alt="斗地主(含单机）" title="斗地主(含单机）">
+                        </a>
+                        <a  class="game-name" title="">斗地主(含单机）</a>
+                    </li>
+                    <li>
+                        <a  class="game-icon" title="斗牛">
+                            <img src="asset/zgda_115.png" alt="斗牛" title="斗牛">
+                        </a>
+                        <a  class="game-name" title="">斗牛</a>
+                    </li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="new module  module ">
+        <div class="hd">
+            <h3>推荐资讯</h3>
+            <a  title="更多资讯">
+                <span>更多</span>
+                <i class="icon-xiangyoujiantou iconfont"></i>
+            </a>
+        </div>
+        <div class="bd">
+            <ul>
+                    <li class="border">
+                        <a class="left" title="扑克牌游戏的方式有哪些有哪些以后那些随">
+                            <img src="asset/16120914149826.jpg" alt="" title="扑克牌游戏的方式有哪些有哪些以后那些随">
+                        </a>
+                        <div class="right">
+                            <a class="title" title="扑克牌游戏的方式有哪些有哪些以后那些随">
+                                <span>
+                                    扑克牌游戏的方式有哪些有哪些以后那些随
+                                </span>
+                            </a>
+                            <div class="info">
+                                <span class="time">2016-12-09 </span>
+                                <span>
+                                    <i></i><em>8692</em>
+                                </span>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="border">
+                        <a class="left" title="wx测试2221">
+                            <img src="asset/18081714429425.jpg" alt="" title="wx测试2221">
+                        </a>
+                        <div class="right">
+                            <a class="title" title="wx测试2221">
+                                <span>
+                                    wx测试2221
+                                </span>
+                            </a>
+                            <div class="info">
+                                <span class="time">2017-08-31 </span>
+                                <span>
+                                    <i></i><em>6323</em>
+                                </span>
+                            </div>
+                        </div>
+                    </li>
+                    <li >
+                        <a  class="left" title="景德镇麻将手机版Q萌升级">
+                            <img src="asset/16120909223810.jpg" alt="" title="景德镇麻将手机版Q萌升级">
+                        </a>
+                        <div class="right">
+                            <a class="title" title="景德镇麻将手机版Q萌升级" >
+                                <span>
+                                    景德镇麻将手机版Q萌升级
+                                </span>
+                            </a>
+                            <div class="info">
+                                <span class="time">2016-12-09 </span>
+                                <span>
+                                    <i></i><em>4210</em>
+                                </span>
+                            </div>
+                        </div>
+                    </li>
+            </ul>
+        </div>
+    </section>
+
+
+    
+    <footer>
+        <div class="list">
+            <a  rel="nofollow" title="本站简介">本站简介 </a>
+            <a  rel="nofollow"  title="联系我们">联系我们</a>
+            <a   title="资讯精选">资讯精选</a>
+        </div>
+        <p>浙江畅唐网络股份有限公司版权所有©2004-<span class="time">2018</span></p>
+        <p>浙网文[2018]2411-151号</p>
+        <p>增值电信业务经营许可证：浙B2-20090241</p>
+        <p>文网游备字[2014]M-CBG136号</p>
+    </footer>
+    <script>
+        var parent = window.parent;
+        //dialog对象
+        dialog = parent.$EDITORUI[window.frameElement.id.replace(/_iframe$/, '')];
+        //当前打开dialog的编辑器实例
+        editor = dialog.editor;
+        document.getElementById('preview').innerHTML = editor.getContent();
+        var title = parent.document.getElementById('titleInput').value;
+        
+        document.getElementById('title').innerHTML = title;
+        
+    </script>
+</body>
+</html>

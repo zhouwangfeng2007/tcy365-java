@@ -1,0 +1,175 @@
+.col-xs-1,
+.col-xs-2,
+.col-xs-3,
+.col-xs-4,
+.col-xs-5,
+.col-xs-6,
+.col-xs-7,
+.col-xs-8,
+.col-xs-9,
+.col-xs-10,
+.col-xs-11 {
+  float: left;
+}
+
+.col-xs-1 {
+  width: 8.333333333333332%;
+}
+
+.col-xs-2 {
+  width: 16.666666666666664%;
+}
+
+.col-xs-3 {
+  width: 25%;
+}
+
+.col-xs-4 {
+  width: 33.33333333333333%;
+}
+
+.col-xs-5 {
+  width: 41.66666666666667%;
+}
+
+.col-xs-6 {
+  width: 50%;
+}
+
+.col-xs-7 {
+  width: 58.333333333333336%;
+}
+
+.col-xs-8 {
+  width: 66.66666666666666%;
+}
+
+.col-xs-9 {
+  width: 75%;
+}
+
+.col-xs-10 {
+  width: 83.33333333333334%;
+}
+
+.col-xs-11 {
+  width: 91.66666666666666%;
+}
+
+.col-xs-12 {
+  width: 100%;
+}
+.w-1 {
+  width: 8.333333333333332%;
+}
+
+.w-2 {
+  width: 16.666666666666664%;
+}
+
+.w-3 {
+  width: 25%;
+}
+
+.w-4 {
+  width: 33.33333333333333%;
+}
+
+.w-5 {
+  width: 41.66666666666667%;
+}
+
+.w-6 {
+  width: 50%;
+}
+
+.w-7 {
+  width: 58.333333333333336%;
+}
+
+.w-8 {
+  width: 66.66666666666666%;
+}
+
+.w-9 {
+  width: 75%;
+}
+
+.w-10 {
+  width: 83.33333333333334%;
+}
+
+.w-11 {
+  width: 91.66666666666666%;
+}
+
+.w-12 {
+  width: 100%;
+}
+.col-lab{line-height:30px;display:inline-block;text-align:right;font-size:12px;float:left;}
+
+div.ac { 
+	border-style: solid;
+	border-width: 1px;
+	border-color: gray;
+	position: absolute;
+	display: none;
+	overflow: auto;
+	z-index:110;
+}
+
+div.ac > ul {
+	margin: 0px;
+	padding: 0px;
+}
+
+div.ac > ul > li {
+	margin: 0px;
+	list-style-type: none;
+	background-color: white;
+	word-break: break-all;
+	font-family: helvetica, arial, "Courier New", sans-serif;
+}
+
+div.ac > ul > li > div {
+	display: table-row;
+	width: 100%;
+}
+
+div.ac > ul > li > div em {
+	background-color: #B0E2FF;
+	font-style: normal;
+}
+
+div.ac > ul > li.normal {
+	padding: 2px 0px 2px 2px;
+}
+
+div.ac > ul > li.normal > div > span{
+	display: table-cell;
+	vertical-align: middle;
+}
+
+div.ac > ul > li.iconList {
+	padding: 0px 0px 0px 2px;
+}
+
+div.ac > ul > li.iconList > div > div {
+	display: table-cell;
+	vertical-align: middle;
+	padding-right: 5px;
+}
+
+div.ac > ul > li.iconList > div > div > img {
+	display: table;
+	display: table-cell\9;
+}   
+
+div.ac > ul > li.iconList > div > span {
+	display: table-cell;
+	vertical-align: middle;
+}
+
+div.ac > ul > li.selected {
+	background-color: #DCDCDC;
+}

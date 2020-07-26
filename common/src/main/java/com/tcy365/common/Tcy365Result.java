@@ -8,7 +8,7 @@ public class Tcy365Result<T> implements Serializable {
     private T data;
 
 
-    public static <T> Tcy365Result<T> Success(T data) {
+    public static <T> Tcy365Result<T>  Success(T data) {
         Tcy365Result<T> res = new Tcy365Result<T>();
         res.setCode(0);
         res.setData(data);
