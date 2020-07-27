@@ -3,6 +3,7 @@ package com.tcy365.dao.tcy365webdb;
 import com.tcy365.entity.tcy365webdb.tbl_Web;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.HashMap;
 import java.util.List;
 
 public interface tbl_WebMapper {
@@ -18,7 +19,7 @@ public interface tbl_WebMapper {
 
     List<tbl_Web> selectAll();
 
-    List<tbl_Web> selectByPage(@Param("pageIndex") Integer pageIndex,@Param("pageSize") Integer pageSize);
+    public List<tbl_Web> selectByPage(  HashMap<String, Object> condition);
 
     int updateByPrimaryKeySelective(tbl_Web record);
 

@@ -26,7 +26,7 @@
                 </c:when>
                 <c:otherwise>
                     <a class="page-numbers" href="${pageUrlPrefix}=${pageInfo.pageNum-1}">
-                        <span class="fa fa-angle-left"></span>
+                        <span class="fa fa-angle-left">&lt;</span>
                     </a>
                 </c:otherwise>
             </c:choose>
@@ -64,7 +64,7 @@
                 </c:when>
                 <c:otherwise>
                     <a class="page-numbers" href="${pageUrlPrefix}=${pageInfo.pageNum+1}">
-                        <span class="fa fa-angle-right"></span>
+                        <span class="fa fa-angle-right">&gt;</span>
                     </a>
                 </c:otherwise>
             </c:choose>

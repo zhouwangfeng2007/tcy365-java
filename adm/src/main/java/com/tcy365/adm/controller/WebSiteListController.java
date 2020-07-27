@@ -1,8 +1,10 @@
 package com.tcy365.adm.controller;
 
+import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.tcy365.entity.tcy365webdb.tbl_Web;
 import com.tcy365.service.ITblWebService;
+import lombok.var;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,15 +27,11 @@ public class WebSiteListController {
     @RequestMapping(value = "/WebSiteList", method = RequestMethod.GET)
     public String WebSiteList(@RequestParam(required = false, defaultValue = "1") Integer pageIndex,
                               @RequestParam(required = false, defaultValue = "10") Integer pageSize,
-                              HttpServletRequest request, HttpServletResponse response ) {
-        List<tbl_Web> listWeb = tblWebService.selectByPage(pageIndex, pageSize);
-        request.setAttribute("pagedWeb", listWeb);
-
-//        PageInfo<tbl_Web> listWeb =  tblWebService.selectByPage(pageIndex, pageSize);
-//        request.addAttribute("pageInfo", listWeb);
-
-//        PageInfo<Article> articleList = articleService.pageArticle(pageIndex, pageSize, criteria);
-//        model.addAttribute("pageInfo", articleList);
+                              HttpServletRequest request, HttpServletResponse response, Model model) {
+        var pageUrlPrefix =String.format("%s?pageIndex",request.getRequestURI()) ;
+        model.addAttribute("pageUrlPrefix", pageUrlPrefix);
+        PageInfo<tbl_Web> listWeb = tblWebService.selectByPage(pageIndex, pageSize, null);
+        request.setAttribute("pageInfo", listWeb);
         return "WebSiteList.jsp";
     }
 }

@@ -3,9 +3,11 @@ package com.tcy365.service;
 
 
 
+import com.github.pagehelper.PageInfo;
 import com.tcy365.entity.tcy365webdb.tbl_Web;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
 
 
@@ -18,5 +20,5 @@ public interface ITblWebService {
 
    public List<tbl_Web> getAll();
 
-   public List<tbl_Web> selectByPage(Integer pageIndex,Integer pageSize);
+   public PageInfo<tbl_Web> selectByPage( Integer pageIndex,Integer pageSize, HashMap<String, Object> condition);
 }

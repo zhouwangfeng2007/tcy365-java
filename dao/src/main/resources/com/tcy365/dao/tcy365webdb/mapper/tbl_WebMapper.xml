@@ -36,6 +36,18 @@
     <select id="selectByPage" resultMap="ResultMapWithBLOBs">
         SELECT<include refid="Base_Column_List"/>,
         <include refid="Blob_Column_List"/>
+        FROM tbl_Web
+        <where>
+            <if test="IsVisable != null">
+                article.article_status = #{status} AND
+            </if>
+            1 = 1
+        </where>
+        ORDER BY Id DESC
+    </select>
+    <select id="selectByPage_NotUsed" resultMap="ResultMapWithBLOBs">
+        SELECT<include refid="Base_Column_List"/>,
+        <include refid="Blob_Column_List"/>
         FROM ( SELECT TOP ${pageIndex*pageSize}<include refid="Base_Column_List"/>,<include refid="Blob_Column_List"/>,
         ROW_NUMBER() OVER (ORDER BY Id desc) row FROM tbl_Web ) t WHERE t.row > ${(pageIndex-1)*pageSize}
     </select>

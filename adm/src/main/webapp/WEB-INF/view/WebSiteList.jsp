@@ -12,6 +12,7 @@
     <script src="../assets/dskin/js/DUI.js"></script>
     <script src="../assets/Scripts/tcy365.js"></script>
     <link href="../assets/CSS/common.css" rel="stylesheet"/>
+    <link href="../assets/CSS/paging.css" rel="stylesheet"/>
 </head>
 <body>
 <div class="p10">
@@ -96,13 +97,12 @@
                     <th>分站级别</th>
                     <th>对应地区</th>
                     <th>渠道ID</th>
-                    <th>&nbsp;</th>
+                    <th>&nbsp</th>
                 </tr>
                 </thead>
                 <tbody>
-                <c:choose>
-                    <c:when test='<%= !ListHelper.IsEmpty((List<?>) request.getAttribute("pagedWeb")) %>'>
-                        <c:forEach items='${pagedWeb}' var="b" varStatus="idx">
+
+                        <c:forEach items='${pageInfo.list}' var="b" varStatus="idx">
                             <tr>
                                 <td>
                                    <span title="${b.getId()}"><nobr>${b.getId()}</nobr></span>
@@ -145,17 +145,15 @@
                                 </td>
                             </tr>
                         </c:forEach>
-                    </c:when>
-                </c:choose>
+
 
                 </tbody>
             </table>
         </div>
     </div>
-    <%--    <div>--%>
-    <%--        <cc:AspNetPager ID="AspNetPager2" runat="server" LinkType="服务器提交" PageSize="10" ShowPagerInfo="true"--%>
-    <%--                        ShowGoTo="true" OnPageIndexChange="AspNetPager2_PageIndexChange"/>--%>
-    <%--    </div>--%>
+        <div>
+            <%@ include file="Layout/paging.jsp" %>
+        </div>
 </div>
 <script src="http://static.tcy365.com/common/ui/jdpicker/1.0/jdpicker.min.js"></script>
 <script src="http://static.tcy365.com/common/ui/dialog/1.0/dialog.js"></script>
