@@ -24,7 +24,7 @@ public class BizShowSelCity {
             return false;
         }
 
-        if (lstNoSelCity.lastIndexOf(web.getWebarea())>=0)
+        if (lstNoSelCity.lastIndexOf(web.webarea)>=0)
         {
             return false;
         }

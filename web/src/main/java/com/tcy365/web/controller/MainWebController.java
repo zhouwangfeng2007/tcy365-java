@@ -29,7 +29,7 @@ public class MainWebController extends BaseController {
         tbl_Web web = getCurrentWeb(request);
         request.setAttribute("MetaMobileUrl", BizParam.getMobileWebUrl());
         request.setAttribute("SelIndex", 1);
-        List<tbl_PCBanner> listPcBanner = pcBannerService.selectByWebId(web.getId());
+        List<tbl_PCBanner> listPcBanner = pcBannerService.selectByWebId(web.id);
         request.setAttribute("ListPcBanner", listPcBanner);
         return "mainweb.jsp";
     }

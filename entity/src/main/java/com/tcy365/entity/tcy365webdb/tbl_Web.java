@@ -1,185 +1,48 @@
 package com.tcy365.entity.tcy365webdb;
 
+import com.tcy365.entity.Abstract.*;
+import lombok.Data;
+
+
 import java.util.Date;
+@Data
+public class tbl_Web   {
 
-public class tbl_Web {
-    private Integer id;
+    public Integer id;
 
-    private String webname;
+    public String webname;
 
-    private String webnameshort;
+    public String webnameshort;
 
-    private String webspelling;
+    public String webspelling;
 
-    private Integer channelid;
+    public Integer channelid;
 
-    private Integer webgrade;
+    public Integer webgrade;
 
-    private String webarea;
+    public String webarea;
 
-    private String weburl;
+    public String weburl;
 
-    private String webdomain;
+    public String webdomain;
 
-    private Integer isaudit;
+    public Integer isaudit;
 
-    private String title;
+    public String title;
 
-    private String keywords;
+    public String keywords;
 
-    private String description;
+    public String description;
 
-    private String indexstatjs;
+    public String indexstatjs;
 
-    private Integer isvisible;
+    public Integer isvisible;
 
-    private Date createtime;
+    public Date createtime;
 
-    private Date lastupdatetime;
+    public Date lastupdatetime;
 
-    private String friendlinks;
+    public String friendlinks;
 
-    public Integer getId() {
-        return id;
-    }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getWebname() {
-        return webname;
-    }
-
-    public void setWebname(String webname) {
-        this.webname = webname;
-    }
-
-    public String getWebnameshort() {
-        return webnameshort;
-    }
-
-    public void setWebnameshort(String webnameshort) {
-        this.webnameshort = webnameshort;
-    }
-
-    public String getWebspelling() {
-        return webspelling;
-    }
-
-    public void setWebspelling(String webspelling) {
-        this.webspelling = webspelling;
-    }
-
-    public Integer getChannelid() {
-        return channelid;
-    }
-
-    public void setChannelid(Integer channelid) {
-        this.channelid = channelid;
-    }
-
-    public Integer getWebgrade() {
-        return webgrade;
-    }
-
-    public void setWebgrade(Integer webgrade) {
-        this.webgrade = webgrade;
-    }
-
-    public String getWebarea() {
-        return webarea;
-    }
-
-    public void setWebarea(String webarea) {
-        this.webarea = webarea;
-    }
-
-    public String getWeburl() {
-        return weburl;
-    }
-
-    public void setWeburl(String weburl) {
-        this.weburl = weburl;
-    }
-
-    public String getWebdomain() {
-        return webdomain;
-    }
-
-    public void setWebdomain(String webdomain) {
-        this.webdomain = webdomain;
-    }
-
-    public Integer getIsaudit() {
-        return isaudit;
-    }
-
-    public void setIsaudit(Integer isaudit) {
-        this.isaudit = isaudit;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getKeywords() {
-        return keywords;
-    }
-
-    public void setKeywords(String keywords) {
-        this.keywords = keywords;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getIndexstatjs() {
-        return indexstatjs;
-    }
-
-    public void setIndexstatjs(String indexstatjs) {
-        this.indexstatjs = indexstatjs;
-    }
-
-    public Integer getIsvisible() {
-        return isvisible;
-    }
-
-    public void setIsvisible(Integer isvisible) {
-        this.isvisible = isvisible;
-    }
-
-    public Date getCreatetime() {
-        return createtime;
-    }
-
-    public void setCreatetime(Date createtime) {
-        this.createtime = createtime;
-    }
-
-    public Date getLastupdatetime() {
-        return lastupdatetime;
-    }
-
-    public void setLastupdatetime(Date lastupdatetime) {
-        this.lastupdatetime = lastupdatetime;
-    }
-
-    public String getFriendlinks() {
-        return friendlinks;
-    }
-
-    public void setFriendlinks(String friendlinks) {
-        this.friendlinks = friendlinks;
-    }
 }

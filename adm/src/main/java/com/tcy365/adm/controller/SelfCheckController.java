@@ -42,7 +42,7 @@ public class SelfCheckController {
         SelfCheckResultItem item = new SelfCheckResultItem();
         item.setCheckItem("检测数据库");
         tbl_Web web = tbl_webMapper.selectByPrimaryKey(1);
-        item.setCheckResult(web.getTitle() + "成功" );
+        item.setCheckResult(web.title + "成功" );
         return item;
     }
 }

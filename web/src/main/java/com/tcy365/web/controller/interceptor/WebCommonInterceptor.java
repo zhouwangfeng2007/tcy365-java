@@ -47,7 +47,7 @@ public class WebCommonInterceptor implements HandlerInterceptor {
         }
 
         if(web!=null){
-            CookieHelper.addCookie(httpServletResponse,ConstantValueDefine.CurrentWebDomain_CookieName,web.getWebdomain(),ConstantValueDefine.CurrentWebDomain_CookieAge);
+            CookieHelper.addCookie(httpServletResponse,ConstantValueDefine.CurrentWebDomain_CookieName,web.webdomain,ConstantValueDefine.CurrentWebDomain_CookieAge);
         }
         httpServletRequest.setAttribute("web", web);
         return true;

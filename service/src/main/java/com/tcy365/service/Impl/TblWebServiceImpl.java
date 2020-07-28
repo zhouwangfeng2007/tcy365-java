@@ -38,6 +38,7 @@ public class TblWebServiceImpl implements ITblWebService {
     @Override
     public PageInfo<tbl_Web> selectByPage(Integer pageIndex,Integer pageSize, HashMap<String, Object> condition) {
         PageHelper.startPage(pageIndex, pageSize);
+
         var webList= tbl_webMapper.selectByPage(condition);
         var pageInfo=new PageInfo<>(webList);
         return pageInfo;
