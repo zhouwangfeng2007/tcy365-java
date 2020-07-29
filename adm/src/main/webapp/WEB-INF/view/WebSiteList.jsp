@@ -16,7 +16,7 @@
     <link href="../assets/CSS/paging.css" rel="stylesheet"/>
 </head>
 <body>
-<form method="get" action="/WebSite/WebSiteList">
+<form method="get" action="/WebSite/WebSiteList?pageIndex=1">
     <div class="p10">
         <div class="d-panel">
             <h3 class="arrow"><strong>查找分站</strong>
@@ -117,7 +117,7 @@
                                 <span title="${b.weburl}"><nobr>${b.weburl}</nobr></span>
                             </td>
                             <td>
-                                <span title="${b.isvisible}"><nobr>${b.isvisible}</nobr></span>
+                                <span title="${IsVisible.v b.isvisible}"><nobr>${b.isvisible}</nobr></span>
                             </td>
                             <td>
                                 <span title="${b.webgrade}"><nobr>${b.webgrade}</nobr></span>
@@ -143,8 +143,8 @@
                                    onclick="frame('大厅管理  (分站:${b.webname},${b.weburl})', 'HallDownList?wid=${b.id}', 900, 500)">大厅管理</a>
                             </td>
                             <td>
-                                <input type="button" value="显示${b.id}">
-                                <input type="button" value="隐藏${b.id}">
+                                <input type="button" class="d-button d-button-blue" value="显示${b.id}">
+                                <input type="button" class="d-button" value="隐藏${b.id}">
                             </td>
                         </tr>
                     </c:forEach>

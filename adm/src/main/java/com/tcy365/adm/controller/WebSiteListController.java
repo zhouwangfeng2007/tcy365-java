@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/WebSite")
@@ -32,15 +32,34 @@ public class WebSiteListController {
                               QueryWebInput queryWebInput,
                               HttpServletRequest request, HttpServletResponse response, Model model) {
         System.out.println(queryWebInput.toString());
-        String queryString=request.getQueryString();
-        if(StringHelper.isNullOrEmpty(queryString))        {
-            queryString="pageIndex";
-        }
-        String uri=request.getRequestURI();
-        var pageUrlPrefix =String.format("%s",uri+"?"+queryString) ;
+        String pageUrlPrefix = getPageProfix(request);
         model.addAttribute("pageUrlPrefix", pageUrlPrefix);
         PageInfo<tbl_Web> listWeb = tblWebService.selectByPage(pageIndex, pageSize, null);
         request.setAttribute("pageInfo", listWeb);
         return "WebSiteList.jsp";
     }
+
+    String getPageProfix(HttpServletRequest request) {
+        String pageUrlPrefix = "";
+        String uri = request.getRequestURI() + "";
+        Map<String, String[]> parameterMap = request.getParameterMap();
+        if (parameterMap == null || parameterMap.size() <= 0) {
+            pageUrlPrefix = "?pageIndex";
+            return uri + pageUrlPrefix;
+        }
+        if (parameterMap.size() == 1) {
+            pageUrlPrefix = "?pageIndex";
+            return uri + pageUrlPrefix;
+        }
+        for (String pName : parameterMap.keySet()) {
+            if (pName.equals("pageIndex")) {
+                continue;
+            } else {
+                pageUrlPrefix += "?" + pName + "=" + parameterMap.get(pName)[0];
+            }
+        }
+
+        return uri + pageUrlPrefix+"&pageIndex";
+    }
+
 }

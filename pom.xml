@@ -17,6 +17,7 @@
         <module>mapper</module>
         <module>dao</module>
         <module>mapper</module>
+        <module>cache</module>
     </modules>
 
 
