@@ -7,6 +7,22 @@ public enum PcGameClass {
     XiuXian(4000, "休闲"),
     QiTa(5000, "其他");
 
+    public static String getDescription(Integer code) {
+        switch (code) {
+            case 1000:
+                return "牌类";
+            case 2000:
+                return "麻将";
+            case 3000:
+                return "棋类";
+            case 4000:
+                return "休闲";
+            case 5000:
+                return "其他";
+        }
+        return code.toString();
+    }
+
     private int code;
 
     public int getCode() {
@@ -26,8 +42,9 @@ public enum PcGameClass {
     }
 
     private String description;
+
     PcGameClass(int code, String description) {
-        this.code=code;
-        this.description=description;
+        this.code = code;
+        this.description = description;
     }
 }

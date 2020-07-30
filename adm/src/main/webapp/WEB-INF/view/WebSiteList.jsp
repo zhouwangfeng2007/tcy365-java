@@ -1,6 +1,7 @@
-<%@ page import="com.tcy365.common.utils.ListHelper" %>
-<%@ page import="java.util.List" %>
 <%@ page import="com.tcy365.common.bizEnum.IsVisible" %>
+<%@ page import="com.tcy365.entity.tcy365webdb.tbl_Web" %>
+<%@ page import="com.github.pagehelper.PageInfo" %>
+<%@ page import="com.tcy365.common.bizEnum.WebGrade" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
@@ -42,7 +43,7 @@
                             <select name="isvisible" class="d-form-input">
                                 <option selected value="">请选择</option>
                                 <c:forEach items='<%= IsVisible.values()%>' var="a" varStatus="idx">
-                                    <option value="${a.getCode()}">${a.getDescription()}</option>
+                                    <option value="${a.code}">${a.description}</option>
                                 </c:forEach>
                             </select>
                         </div>
@@ -52,20 +53,20 @@
                             <label>分站级别：</label>
                             <select name="webgrade" class="d-form-input">
                                 <option selected value="">请选择</option>
-                                <option value="1">地市级</option>
-                                <option value="2">县区级</option>
+                                <c:forEach items='<%=WebGrade.values()%>' var="a" varStatus="idx">
+                                    <option value="${a.code}">${a.desc}</option>
+                                </c:forEach>
                             </select>
-
                         </div>
                         <div class="col-xs-8">
                             <label>对应地区：</label>
-                            <select name="ddlProvince" class="d-form-input">
+                            <select name="ddlProvince" id="ddlProvince" class="d-form-input">
                                 <option selected value="">请选择</option>
                             </select>
-                            <select name="ddlCity" class="d-form-input">
+                            <select name="ddlCity" id="ddlCity" class="d-form-input">
                                 <option selected value="">请选择</option>
                             </select>
-                            <select name="ddlCounty" class="d-form-input">
+                            <select name="ddlCounty" id="ddlCounty" class="d-form-input">
                                 <option selected value="">请选择</option>
                             </select>
                         </div>
@@ -100,54 +101,55 @@
                         <th>分站级别</th>
                         <th>对应地区</th>
                         <th>渠道ID</th>
-                        <th>&nbsp</th>
+                        <th>管理</th>
+                        <th>&nbsp;</th>
                     </tr>
                     </thead>
                     <tbody>
+                    <% for (tbl_Web web : ((PageInfo<tbl_Web>) request.getAttribute("pageInfo")).getList()) {%>
+                    <tr>
+                        <td>
+                            <span title="<%=web.id%>"><nobr><%=web.id%></nobr></span>
+                        </td>
+                        <td>
+                            <span title="<%=web.webname%>"><nobr><%=web.webname%></nobr></span>
+                        </td>
+                        <td>
+                            <span title="<%=web.weburl%>"><nobr><%=web.weburl%></nobr></span>
+                        </td>
+                        <td>
+                            <span><nobr><%= IsVisible.getDescription(web.isvisible)%> </nobr></span>
+                        </td>
+                        <td>
+                            <span><nobr><%= WebGrade.getDescription(web.webgrade)%></nobr></span>
+                        </td>
+                        <td>
+                            <span title="<%=web.webarea%>"><nobr><%=web.webarea%></nobr></span>
+                        </td>
+                        <td>
+                            <span title="<%=web.channelid%>"><nobr><%=web.channelid%></nobr></span>
+                        </td>
+                        <td>
+                            <a href="javascript:;" class="edit"
+                               onclick="frame('编辑分站  (分站:<%=web.webname%>,<%=web.weburl%>)', '/WebSite/EditWebSite?wid=<%=web.id%>', 900, 500)">编辑</a>|
+                            <a href="javascript:;" class="edit"
+                               onclick="frame('编辑分站资讯  (分站:<%=web.webname%>,<%=web.weburl%>)', '/News/WebNewsList?from=1&wid=<%=web.id%>', 900, 500)">资讯管理</a>|
+                            <a href="javascript:;" class="edit"
+                               onclick="frame('分站推荐管理  (分站:<%=web.webname%>,<%=web.weburl%>)', 'RecommendMgr?wid=<%=web.id%>', 900, 500)">推荐管理</a>|
+                            <a href="javascript:;" class="edit"
+                               onclick="frame('分站隐藏游戏  (分站:<%=web.webname%>,<%=web.weburl%>)', 'WebSpecialGame?SpecialGameType=1&wid=<%=web.id%>', 900, 500)">隐藏游戏</a>|
+                            <a href="javascript:;" class="edit"
+                               onclick="frame('不可搜索游戏  (分站:<%=web.webname%>,<%=web.weburl%>)', 'WebSpecialGame?SpecialGameType=3&wid=<%=web.id%>', 900, 500)">不可搜索游戏</a>|
+                            <a href="javascript:;" class="edit"
+                               onclick="frame('大厅管理  (分站:<%=web.webname%>,<%=web.weburl%>)', 'HallDownList?wid=<%=web.id%>', 900, 500)">大厅管理</a>
+                        </td>
+                        <td>
+                            <input type="button" class="d-button d-button-blue" value="显示">
+                            <input type="button" class="d-button" value="隐藏">
+                        </td>
+                    </tr>
 
-                    <c:forEach items="${pageInfo.list}" var="b" varStatus="idx">
-                        <tr>
-                            <td>
-                                <span title="${b.id}"><nobr>${b.id}</nobr></span>
-                            </td>
-                            <td>
-                                <span title="${b.webname}"><nobr>${b.webname}</nobr></span>
-                            </td>
-                            <td>
-                                <span title="${b.weburl}"><nobr>${b.weburl}</nobr></span>
-                            </td>
-                            <td>
-                                <span title="${IsVisible.v b.isvisible}"><nobr>${b.isvisible}</nobr></span>
-                            </td>
-                            <td>
-                                <span title="${b.webgrade}"><nobr>${b.webgrade}</nobr></span>
-                            </td>
-                            <td>
-                                <span title="${b.webarea}"><nobr>${b.webarea}</nobr></span>
-                            </td>
-                            <td>
-                                <span title="${b.channelid}"><nobr>${b.channelid}</nobr></span>
-                            </td>
-                            <td>
-                                <a href="javascript:;" class="edit"
-                                   onclick="frame('编辑分站  (分站:${b.webname},${b.weburl})', '/WebSite/EditWebSite?wid=${b.id}', 900, 500)">编辑</a>|
-                                <a href="javascript:;" class="edit"
-                                   onclick="frame('编辑分站资讯  (分站:${b.webname},${b.weburl})', '/News/WebNewsList?from=1&wid=${b.id}', 900, 500)">资讯管理</a>|
-                                <a href="javascript:;" class="edit"
-                                   onclick="frame('分站推荐管理  (分站:${b.webname},${b.weburl})', 'RecommendMgr?wid=${b.id}', 900, 500)">推荐管理</a>|
-                                <a href="javascript:;" class="edit"
-                                   onclick="frame('分站隐藏游戏  (分站:${b.webname},${b.weburl})', 'WebSpecialGame?SpecialGameType=1&wid=${b.id}', 900, 500)">隐藏游戏</a>|
-                                <a href="javascript:;" class="edit"
-                                   onclick="frame('不可搜索游戏  (分站:${b.webname},${b.weburl})', 'WebSpecialGame?SpecialGameType=3&wid=${b.id}', 900, 500)">不可搜索游戏</a>|
-                                <a href="javascript:;" class="edit"
-                                   onclick="frame('大厅管理  (分站:${b.webname},${b.weburl})', 'HallDownList?wid=${b.id}', 900, 500)">大厅管理</a>
-                            </td>
-                            <td>
-                                <input type="button" class="d-button d-button-blue" value="显示${b.id}">
-                                <input type="button" class="d-button" value="隐藏${b.id}">
-                            </td>
-                        </tr>
-                    </c:forEach>
+                    <%}%>
 
 
                     </tbody>
@@ -161,7 +163,28 @@
 </form>
 <script src="http://static.tcy365.com/common/ui/jdpicker/1.0/jdpicker.min.js"></script>
 <script src="http://static.tcy365.com/common/ui/dialog/1.0/dialog.js"></script>
+<script>
 
+    $.get("/area/getallprovince", function (result) {
+        console.log(result);
+        var provinceArray = result.data;
+        $("#ddlProvince").empty();
+        const opt = $("<option selected value=''>请选择</option>");
+        $("#ddlProvince").append(opt);
+        $.each(provinceArray, function (index, item) {
+            const opt = $("<option value=" + item.id + ">" + item.name + "</option>");
+            $("#ddlProvince").append(opt)
+        });
+
+    });
+
+
+    var url = "/area/getcity" + $("ddlCity").val();
+    $.get(url, function (result) {
+        console.log(result);
+    });
+
+</script>
 
 </body>
 </html>
