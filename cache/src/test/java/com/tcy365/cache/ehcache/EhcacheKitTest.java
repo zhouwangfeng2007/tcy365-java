@@ -2,8 +2,6 @@ package com.tcy365.cache.ehcache;
 
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-
 public class EhcacheKitTest {
 
     @Test

@@ -1,5 +1,7 @@
 package com.tcy365.cache.ehcache;
+
 import com.tcy365.common.utils.StringHelper;
+
 
 public class CacheFactory {
 
@@ -12,12 +14,15 @@ public class CacheFactory {
         }
         if (key.equalsIgnoreCase(REDIS)) {
             throw new RuntimeException("未实现Redis缓存");
-           // return new RedisCache();
-        } else if(key.equalsIgnoreCase(EHCACHE_DEFAULT_CACHE)){
+            // return new RedisCache();
+        } else if (key.equalsIgnoreCase(EHCACHE_DEFAULT_CACHE)) {
             return new EhcacheDefaultCache();
-        }else{
+        } else {
             throw new RuntimeException("不存在的缓存工具");
         }
     }
 
+    public static Cache EhCache() {
+        return build(CacheFactory.EHCACHE_DEFAULT_CACHE);
+    }
 }

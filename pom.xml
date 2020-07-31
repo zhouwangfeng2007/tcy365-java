@@ -14,9 +14,7 @@
         <module>entity</module>
         <module>common</module>
         <module>service</module>
-        <module>mapper</module>
         <module>dao</module>
-        <module>mapper</module>
         <module>cache</module>
     </modules>
 

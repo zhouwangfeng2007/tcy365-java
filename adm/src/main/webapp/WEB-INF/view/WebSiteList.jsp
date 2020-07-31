@@ -148,10 +148,7 @@
                             <input type="button" class="d-button" value="隐藏">
                         </td>
                     </tr>
-
                     <%}%>
-
-
                     </tbody>
                 </table>
             </div>
@@ -178,11 +175,37 @@
 
     });
 
+    $("#ddlProvince").on("change",
+        function () {
+            var url = "/area/getcity/" + $("#ddlProvince").val();
+            $.get(url, function (result) {
+                console.log(result);
+                $("#ddlCity").empty();
+                $("#ddlCity").append("<option selected value=''>请选择</option>");
+                $("#ddlCounty").empty();
+                $("#ddlCounty").append("<option selected value=''>请选择</option>");
 
-    var url = "/area/getcity" + $("ddlCity").val();
-    $.get(url, function (result) {
-        console.log(result);
-    });
+                $.each(result.data, function (index, item) {
+                    $("#ddlCity").append("<option value=" + item.id + ">" + item.name + "</option>")
+                });
+            });
+        });
+
+    $("#ddlCity").on("change",
+        function () {
+            var url = "/area/getdistrict/" + $("#ddlCity").val();
+            $.get(url, function (result) {
+                console.log(result);
+                $("#ddlCounty").empty();
+                const opt = $("<option selected value=''>请选择</option>");
+                $("#ddlCounty").append(opt);
+                $.each(result.data, function (index, item) {
+                    const opt = $("<option value=" + item.id + ">" + item.name + "</option>");
+                    $("#ddlCounty").append(opt)
+                });
+            });
+        });
+
 
 </script>
 

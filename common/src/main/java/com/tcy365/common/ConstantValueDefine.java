@@ -18,4 +18,9 @@ public class ConstantValueDefine {
      * 分站Cookies过期时间
      */
     public static final Integer CurrentWebDomain_CookieAge = 86400 * 7;
+
+    /**
+     * 10分钟用毫秒表示的
+     */
+    public static  long TenMinitWithMs=1000*10*60;
 }
