@@ -21,4 +21,6 @@ public interface ITblWebService {
    public List<tbl_Web> getAll();
 
    public PageInfo<tbl_Web> selectByPage( Integer pageIndex,Integer pageSize, HashMap<String, Object> condition);
+
+   public Boolean changeVisible(Integer isVisible ,Integer id);
 }

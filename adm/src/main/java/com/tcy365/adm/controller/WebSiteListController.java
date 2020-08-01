@@ -1,18 +1,13 @@
 package com.tcy365.adm.controller;
 
-import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.tcy365.common.utils.StringHelper;
 import com.tcy365.entity.dto.QueryWebInput;
 import com.tcy365.entity.tcy365webdb.tbl_Web;
 import com.tcy365.service.ITblWebService;
-import lombok.var;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
@@ -34,6 +29,7 @@ public class WebSiteListController {
         System.out.println(queryWebInput.toString());
         String pageUrlPrefix = getPageProfix(request);
         model.addAttribute("pageUrlPrefix", pageUrlPrefix);
+        model.addAttribute("input",queryWebInput);
         PageInfo<tbl_Web> listWeb = tblWebService.selectByPage(pageIndex, pageSize, null);
         request.setAttribute("pageInfo", listWeb);
         return "WebSiteList.jsp";
@@ -51,15 +47,17 @@ public class WebSiteListController {
             pageUrlPrefix = "?pageIndex";
             return uri + pageUrlPrefix;
         }
+
         for (String pName : parameterMap.keySet()) {
-            if (pName.equals("pageIndex")) {
+            if (pName.equals("pageIndex")||pName.equals("t")) {
                 continue;
             } else {
-                pageUrlPrefix += "?" + pName + "=" + parameterMap.get(pName)[0];
+                pageUrlPrefix += "&" + pName + "=" + parameterMap.get(pName)[0];
             }
         }
-
-        return uri + pageUrlPrefix+"&pageIndex";
+        return uri +"?t=1"+pageUrlPrefix+"&pageIndex";
     }
+
+
 
 }

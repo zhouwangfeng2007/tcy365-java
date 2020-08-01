@@ -26,4 +26,6 @@ public interface tbl_WebMapper {
     int updateByPrimaryKeyWithBLOBs(tbl_Web record);
 
     int updateByPrimaryKey(tbl_Web record);
+
+    int updateVisible(@Param("isvisible") Integer isvisible ,@Param("id") Integer id);
 }

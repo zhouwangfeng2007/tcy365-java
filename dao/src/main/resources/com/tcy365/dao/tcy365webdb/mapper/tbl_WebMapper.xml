@@ -298,4 +298,10 @@
       LastUpdateTime = #{lastupdatetime,jdbcType=TIMESTAMP}
     where Id = #{id,jdbcType=INTEGER}
   </update>
+    <update id="updateVisible">
+    update tbl_Web
+    set IsVisible = #{isvisible,jdbcType=INTEGER},
+      LastUpdateTime = getdate()
+    where Id = #{id,jdbcType=INTEGER}
+  </update>
 </mapper>

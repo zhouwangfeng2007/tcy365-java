@@ -43,4 +43,9 @@ public class TblWebServiceImpl implements ITblWebService {
         var pageInfo=new PageInfo<>(webList);
         return pageInfo;
     }
+
+    @Override
+    public Boolean changeVisible(Integer isVisible, Integer id) {
+       return tbl_webMapper.updateVisible(isVisible,id)>0;
+    }
 }

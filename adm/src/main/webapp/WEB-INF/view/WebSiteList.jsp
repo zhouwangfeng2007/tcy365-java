@@ -26,16 +26,15 @@
                         class="icon icon-plus"></i>新建分站</a></p>
             </h3>
             <div class="content nopadding">
-
                 <div class="d-seach">
                     <div class="d-seach-rank clearfix">
                         <div class="col-xs-4">
                             <label>分站名称：</label>
-                            <input type="text" name="webname" class="d-form-input"/>
+                            <input type="text" name="webname" value='${input.webname}' class="d-form-input"/>
                         </div>
                         <div class="col-xs-4">
                             <label>分站ID：</label>
-                            <input type="text" name="id" class="d-form-input"
+                            <input type="text" name="id" class="d-form-input" value='${input.id}'
                                    onkeyup="value=value.replace(/[^\d]/g,'')"/>
                         </div>
                         <div class="col-xs-4">
@@ -74,7 +73,7 @@
                     <div class="d-seach-rank clearfix">
                         <div class="col-xs-4">
                             <label>渠道ID：</label>
-                            <input type="text" name="channelid" class="d-form-input"
+                            <input type="text" name="channelid" class="d-form-input" value='${input.channelid}'
                                    onkeyup="value=value.replace(/[^\d]/g,'')"/>
                         </div>
                     </div>
@@ -144,8 +143,16 @@
                                onclick="frame('大厅管理  (分站:<%=web.webname%>,<%=web.weburl%>)', 'HallDownList?wid=<%=web.id%>', 900, 500)">大厅管理</a>
                         </td>
                         <td>
-                            <input type="button" class="d-button d-button-blue" value="显示">
-                            <input type="button" class="d-button" value="隐藏">
+
+                            <c:if test="<%= web.isvisible==IsVisible.Visible.getCode()  %>">
+                                <input type="button" class="d-button changevisible" value="隐藏" wid="<%=web.id%>"
+                                       vvid="<%= IsVisible.NotVisible.getCode()%>">
+                            </c:if>
+                            <c:if test="<%= web.isvisible==IsVisible.NotVisible.getCode()  %>">
+                                <input type="button" class="d-button d-button-blue changevisible" value="显示"
+                                       wid="<%=web.id%>"
+                                       vvid="<%= IsVisible.Visible.getCode()%>">
+                            </c:if>
                         </td>
                     </tr>
                     <%}%>
@@ -163,7 +170,7 @@
 <script>
 
     $.get("/area/getallprovince", function (result) {
-        console.log(result);
+        // console.log(result);
         var provinceArray = result.data;
         $("#ddlProvince").empty();
         const opt = $("<option selected value=''>请选择</option>");
@@ -179,7 +186,7 @@
         function () {
             var url = "/area/getcity/" + $("#ddlProvince").val();
             $.get(url, function (result) {
-                console.log(result);
+                // console.log(result);
                 $("#ddlCity").empty();
                 $("#ddlCity").append("<option selected value=''>请选择</option>");
                 $("#ddlCounty").empty();
@@ -195,7 +202,7 @@
         function () {
             var url = "/area/getdistrict/" + $("#ddlCity").val();
             $.get(url, function (result) {
-                console.log(result);
+                // console.log(result);
                 $("#ddlCounty").empty();
                 const opt = $("<option selected value=''>请选择</option>");
                 $("#ddlCounty").append(opt);
@@ -206,6 +213,28 @@
             });
         });
 
+    var isVisible = "${input.isvisible}";
+    var webGrade = "${input.webgrade}";
+    var webarea = "${input.webarea}";
+
+    $(".changevisible").click(function () {
+        console.log();
+        $.ajax({
+            url: "/web/changevisible",
+            data: "id=" + $(this).attr("wid") + "&isvisible=" + $(this).attr("vvid"),
+            type: "POST",
+            dataType: "json",
+            success: function (data) {
+                // data = jQuery.parseJSON(data);  //dataType指明了返回数据为json类型，故不需要再反序列化
+                // console.log(data);
+                if (data.code == 0) {
+                    window.location = window.location;
+                } else {
+                    alert(data.msg);
+                }
+            }
+        });
+    });
 
 </script>
 

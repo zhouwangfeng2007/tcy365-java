@@ -8,8 +8,6 @@ import com.tcy365.externalService.Helper.IPASHelper;
 import com.tcy365.service.IIpAreaCacheService;
 import net.sf.ehcache.Element;
 import org.springframework.stereotype.Service;
-
-import java.awt.geom.Area;
 import java.util.List;
 
 
@@ -18,11 +16,15 @@ public class IpAreaCacheServiceImpl implements IIpAreaCacheService {
     @Override
     public List<AreaInfo> getAllProvince() throws Exception {
         String key = "allProvince";
+        return getAreaInfos(key, IPASHelper.getAllProvince());
+    }
+
+    private List<AreaInfo> getAreaInfos(String key, List<AreaInfo> allProvince) throws Exception {
         Element ele = CacheFactory.EhCache().get(key);
         if (ele != null) {
             return (List<AreaInfo>) ele.getObjectValue();
         }
-        List<AreaInfo> result  = IPASHelper.getAllProvince();
+        List<AreaInfo> result  = allProvince;
         CacheFactory.EhCache().set(key, result, ConstantValueDefine.TenMinitWithMs);
         return result;
     }
@@ -30,25 +32,13 @@ public class IpAreaCacheServiceImpl implements IIpAreaCacheService {
     @Override
     public List<AreaInfo> getCityByProvinceID(String provinceId) throws Exception {
         String key = "allCity"+provinceId;
-        Element ele = CacheFactory.EhCache().get(key);
-        if (ele != null) {
-            return (List<AreaInfo>) ele.getObjectValue();
-        }
-        List<AreaInfo> result  = IPASHelper.getCityByProvinceID(provinceId);;
-        CacheFactory.EhCache().set(key, result, ConstantValueDefine.TenMinitWithMs);
-        return result;
+        return getAreaInfos(key, IPASHelper.getCityByProvinceID(provinceId));
 
     }
 
     @Override
     public List<AreaInfo> getDistrictByCityID(String cityId) throws Exception {
         String key = "allCity"+cityId;
-        Element ele = CacheFactory.EhCache().get(key);
-        if (ele != null) {
-            return (List<AreaInfo>) ele.getObjectValue();
-        }
-        List<AreaInfo> result  =    IPASHelper.getDistrictByCityID(cityId);
-        CacheFactory.EhCache().set(key, result, ConstantValueDefine.TenMinitWithMs);
-        return result;
+        return getAreaInfos(key, IPASHelper.getDistrictByCityID(cityId));
     }
 }
