@@ -7,7 +7,7 @@
 <body>
 
 <ul>
-    <li><a href="/WebSite/EditWebSite" target="_blank">新增分站</a></li>
+    <li><a href="/WebSite/EditWebSite/" target="_blank">新增编辑分站</a></li>
     <li><a href="/WebSite/WebSiteList" target="_blank">分站列表</a></li>
 </ul>
 

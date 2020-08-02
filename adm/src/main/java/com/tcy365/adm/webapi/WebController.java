@@ -1,6 +1,7 @@
 package com.tcy365.adm.webapi;
 
 import com.tcy365.common.Tcy365Result;
+import com.tcy365.entity.tcy365webdb.tbl_Web;
 import com.tcy365.service.ITblWebService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,5 +23,21 @@ public class WebController {
             return Tcy365Result.Success(info + "修改成功。");
         }
         return Tcy365Result.Success(info + "修改失败。");
+    }
+
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    @ResponseBody
+    public Tcy365Result<String> AddWeb(tbl_Web web) {
+        String info = "新增站点";
+
+        return Tcy365Result.Success(info + "失败。");
+    }
+
+    @RequestMapping(value = "/edit", method = RequestMethod.POST)
+    @ResponseBody
+    public Tcy365Result<String> EditWeb(tbl_Web web) {
+        String info = "编辑站点";
+
+        return Tcy365Result.Success(info + "失败。");
     }
 }

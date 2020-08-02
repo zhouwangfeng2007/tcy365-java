@@ -5,16 +5,16 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-<head runat="server">
+<head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>分站列表</title>
-    <script src="../assets/Scripts/jquery/jquery-1.8.2.min.js"></script>
-    <script src="../assets/Scripts/artDialog/dialog.min.js"></script>
-    <link href="../assets/dskin/dui.css" rel="stylesheet"/>
-    <script src="../assets/dskin/js/DUI.js"></script>
-    <script src="../assets/Scripts/tcy365.js"></script>
-    <link href="../assets/CSS/common.css" rel="stylesheet"/>
-    <link href="../assets/CSS/paging.css" rel="stylesheet"/>
+    <script src="/assets/Scripts/jquery/jquery-1.8.2.min.js"></script>
+    <script src="/assets/Scripts/artDialog/dialog.min.js"></script>
+    <link href="/assets/dskin/dui.css" rel="stylesheet"/>
+    <script src="/assets/dskin/js/DUI.js"></script>
+    <script src="/assets/Scripts/tcy365.js"></script>
+    <link href="/assets/CSS/common.css" rel="stylesheet"/>
+    <link href="/assets/CSS/paging.css" rel="stylesheet"/>
 </head>
 <body>
 <form method="get" action="/WebSite/WebSiteList?pageIndex=1">
@@ -22,7 +22,7 @@
         <div class="d-panel">
             <h3 class="arrow"><strong>查找分站</strong>
                 <p class="d-panel-btns noclose"><a class="d-button d-button-white" id="addNews" href="#"
-                                                   onclick="frame('新增分站','EditWebSite.jsp',900,600)"><i
+                                                   onclick="frame('新增分站','/WebSite/EditWebSite',900,600)"><i
                         class="icon icon-plus"></i>新建分站</a></p>
             </h3>
             <div class="content nopadding">
@@ -170,7 +170,6 @@
 <script>
 
     $.get("/area/getallprovince", function (result) {
-        // console.log(result);
         var provinceArray = result.data;
         $("#ddlProvince").empty();
         const opt = $("<option selected value=''>请选择</option>");
