@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="com.tcy365.common.bizEnum.IsVisible" %>
+<%@ page import="org.apache.commons.lang.StringEscapeUtils" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -47,13 +48,14 @@
             <div class="content">
                 <div class="p5 clearfix">
                     <label class="col-lab w-1"><span class="red">*</span>分站名称：</label>
-                    <input name="webname" type="text" id="webname" class="d-form-input w-7 fl"/>
+                    <input name="webname" type="text" id="webname" class="d-form-input w-7 fl" value="${web.webname}"/>
                     <span class="col-lab pl5 red txtWebName_tip"></span>
                 </div>
                 <div class="p5 clearfix">
                     <label class="col-lab w-1"><span class="red">*</span>分站域名：</label>
                     <span class="col-lab">www.tcy365.com/</span>
-                    <input name="webdomain" type="text" id="webdomain" class="d-form-input w-3 fl"/>
+                    <input name="webdomain" type="text" id="webdomain" value="${web.webdomain}"
+                           class="d-form-input w-3 fl"/>
                     <span class="col-lab pl5 red txtWebDomain_tip"></span>
                 </div>
                 <div class="p5 clearfix">
@@ -82,6 +84,7 @@
                 <div class="p5 clearfix">
                     <label class="col-lab w-1"><span class="red">*</span>渠道ID：</label>
                     <input name="channelid" type="text" id="channelid" class="d-form-input w-3 fl"
+                           value="${web.channelid}"
                            onkeyup="value=value.replace(/[^\d]/g,&#39;&#39;)"/>
                     <span class="col-lab pl5 red txtChannelId_tip"></span>
                 </div>
@@ -101,17 +104,19 @@
                         <div class="d-tabs-view">
                             <div class="p5 clearfix">
                                 <label class="col-lab w-1"><span class="red">*</span>Title：</label>
-                                <input name="txtTitle" type="text" id="txtTitle" class="d-form-input w-7 fl"/>
+                                <input name="title" type="text" id="title" value='${web.title}'
+                                       class="d-form-input w-7 fl"/>
                                 <span class="col-lab pl5 red txtTitle_tip"></span>
                             </div>
                             <div class="p5 clearfix">
                                 <label class="col-lab w-1"><span class="red">*</span>keywords：</label>
-                                <input name="txtKeyWords" type="text" id="txtKeyWords" class="d-form-input w-7 fl"/>
+                                <input name="keywords" type="text" id="keywords" value='${web.keywords}'
+                                       class="d-form-input w-7 fl"/>
                                 <span class="col-lab pl5 red txtKeyWords_tip"></span>
                             </div>
                             <div class="p5 clearfix">
                                 <label class="col-lab w-1"><span class="red">*</span>Description：</label>
-                                <input name="txtDescription" type="text" id="txtDescription"
+                                <input name="description" type="text" id="description" value='${web.description}'
                                        class="d-form-input w-7 fl"/>
                                 <span class="col-lab pl5 red txtDescription_tip"></span>
                             </div>
@@ -119,15 +124,18 @@
                         <div class="d-tabs-view">
                             <div class="p5 clearfix">
                                 <label class="col-lab w-1">Title：</label>
-                                <input name="txtMTitle" type="text" id="txtMTitle" class="d-form-input w-7 fl"/>
+                                <input name="txtMTitle" type="text" id="txtMTitle" value='${mobileTkd.title}'
+                                       class="d-form-input w-7 fl"/>
                             </div>
                             <div class="p5 clearfix">
                                 <label class="col-lab w-1">keywords：</label>
-                                <input name="txtMKeyWords" type="text" id="txtMKeyWords" class="d-form-input w-7 fl"/>
+                                <input name="txtMKeyWords" type="text" id="txtMKeyWords" value='${mobileTkd.keywords}'
+                                       class="d-form-input w-7 fl"/>
                             </div>
                             <div class="p5 clearfix">
                                 <label class="col-lab w-1">Description：</label>
                                 <input name="txtMDescription" type="text" id="txtMDescription"
+                                       value='${mobileTkd.discription}'
                                        class="d-form-input w-7 fl"/>
                             </div>
                         </div>
@@ -135,14 +143,15 @@
                 </div>
                 <div class="p5 clearfix">
                     <label class="col-lab w-1">友情链接：</label>
-                    <textarea name="txtFriendLink" id="txtFriendLink" class="d-form-textarea w-7 fl"
+                    <textarea name="friendlinks" id="friendlinks" class="d-form-textarea w-7 fl"
+                              value="${web.friendlinks}"
                               rows="5"></textarea>
                     <span class="col-lab pl5 red txtFriendLink_tip"></span>
                 </div>
                 <div class="p5 clearfix">
                     <label class="col-lab w-1">统计代码：</label>
-                    <textarea name="txtIndexStatJs" rows="2" cols="20" id="txtIndexStatJs"
-                              class="d-form-textarea w-7 fl"></textarea>
+                    <textarea name="indexstatjs" rows="2" cols="20" id="indexstatjs"
+                              class="d-form-textarea w-7 fl" text='${web.indexstatjs}'></textarea>
                     <span class="col-lab pl5 red txtIndexStatJs_tip"></span>
                 </div>
             </div>
@@ -245,7 +254,7 @@
     });
 
     function valid() {
-        var t = $("#txtTitle").val();
+        var t = $("#title").val();
         if (t == "") {
             $(".txtTitle_tip").text("请填写PC站Title");
             $("#tab0").click();
@@ -258,7 +267,7 @@
             return false;
         }
         $(".txtTitle_tip").text("");
-        var k = $("#txtKeyWords").val();
+        var k = $("#keywords").val();
         if (k == "") {
             $(".txtKeyWords_tip").text("请填写PC站KeyWords");
             $("#tab0").click();
@@ -270,7 +279,7 @@
             return false;
         }
         $(".txtKeyWords_tip").text("");
-        var d = $("#txtDescription").val();
+        var d = $("#description").val();
         if (d == "") {
             $(".txtDescription_tip").text("请填写PC站Description");
             $("#tab0").click();

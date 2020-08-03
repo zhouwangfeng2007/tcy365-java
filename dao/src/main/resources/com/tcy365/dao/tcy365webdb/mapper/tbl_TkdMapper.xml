@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tcy365.dao.tcy365webdb.tbl_TkdMapper">
+  <resultMap id="BaseResultMap" type="com.tcy365.entity.tcy365webdb.tbl_Tkd">
+    <id column="Id" jdbcType="INTEGER" property="id" />
+    <result column="TKDType" jdbcType="INTEGER" property="tkdtype" />
+    <result column="IsVisible" jdbcType="INTEGER" property="isvisible" />
+    <result column="WebId" jdbcType="INTEGER" property="webid" />
+    <result column="PageUrl" jdbcType="VARCHAR" property="pageurl" />
+    <result column="Title" jdbcType="VARCHAR" property="title" />
+    <result column="KeyWords" jdbcType="VARCHAR" property="keywords" />
+    <result column="DisCription" jdbcType="VARCHAR" property="discription" />
+    <result column="LastUpdateTime" jdbcType="TIMESTAMP" property="lastupdatetime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    Id, TKDType, IsVisible, WebId, PageUrl, Title, KeyWords, DisCription, LastUpdateTime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tbl_TKD
+    where Id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectByCondition" resultMap="BaseResultMap">
+    select top 1
+    <include refid="Base_Column_List" />
+    from tbl_TKD
+    <where>
+      <if test="IsVisible != null">
+        IsVisible = #{IsVisible} AND
+      </if>
+      <if test="TKDType != null">
+        TKDType = #{TKDType} AND
+      </if>
+      <if test="webdomain != null">
+        PageUrl like '%/'+ #{webdomain}+'/' AND
+      </if>
+      1 = 1
+    </where>
+    ORDER BY Id DESC
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tbl_TKD
+    where Id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.tcy365.entity.tcy365webdb.tbl_Tkd">
+    insert into tbl_TKD (Id, TKDType, IsVisible, 
+      WebId, PageUrl, Title, 
+      KeyWords, DisCription, LastUpdateTime
+      )
+    values (#{id,jdbcType=INTEGER}, #{tkdtype,jdbcType=INTEGER}, #{isvisible,jdbcType=INTEGER}, 
+      #{webid,jdbcType=INTEGER}, #{pageurl,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, 
+      #{keywords,jdbcType=VARCHAR}, #{discription,jdbcType=VARCHAR}, #{lastupdatetime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.tcy365.entity.tcy365webdb.tbl_Tkd">
+    insert into tbl_TKD
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        Id,
+      </if>
+      <if test="tkdtype != null">
+        TKDType,
+      </if>
+      <if test="isvisible != null">
+        IsVisible,
+      </if>
+      <if test="webid != null">
+        WebId,
+      </if>
+      <if test="pageurl != null">
+        PageUrl,
+      </if>
+      <if test="title != null">
+        Title,
+      </if>
+      <if test="keywords != null">
+        KeyWords,
+      </if>
+      <if test="discription != null">
+        DisCription,
+      </if>
+      <if test="lastupdatetime != null">
+        LastUpdateTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="tkdtype != null">
+        #{tkdtype,jdbcType=INTEGER},
+      </if>
+      <if test="isvisible != null">
+        #{isvisible,jdbcType=INTEGER},
+      </if>
+      <if test="webid != null">
+        #{webid,jdbcType=INTEGER},
+      </if>
+      <if test="pageurl != null">
+        #{pageurl,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="keywords != null">
+        #{keywords,jdbcType=VARCHAR},
+      </if>
+      <if test="discription != null">
+        #{discription,jdbcType=VARCHAR},
+      </if>
+      <if test="lastupdatetime != null">
+        #{lastupdatetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.tcy365.entity.tcy365webdb.tbl_Tkd">
+    update tbl_TKD
+    <set>
+      <if test="tkdtype != null">
+        TKDType = #{tkdtype,jdbcType=INTEGER},
+      </if>
+      <if test="isvisible != null">
+        IsVisible = #{isvisible,jdbcType=INTEGER},
+      </if>
+      <if test="webid != null">
+        WebId = #{webid,jdbcType=INTEGER},
+      </if>
+      <if test="pageurl != null">
+        PageUrl = #{pageurl,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null">
+        Title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="keywords != null">
+        KeyWords = #{keywords,jdbcType=VARCHAR},
+      </if>
+      <if test="discription != null">
+        DisCription = #{discription,jdbcType=VARCHAR},
+      </if>
+      <if test="lastupdatetime != null">
+        LastUpdateTime = #{lastupdatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where Id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.tcy365.entity.tcy365webdb.tbl_Tkd">
+    update tbl_TKD
+    set TKDType = #{tkdtype,jdbcType=INTEGER},
+      IsVisible = #{isvisible,jdbcType=INTEGER},
+      WebId = #{webid,jdbcType=INTEGER},
+      PageUrl = #{pageurl,jdbcType=VARCHAR},
+      Title = #{title,jdbcType=VARCHAR},
+      KeyWords = #{keywords,jdbcType=VARCHAR},
+      DisCription = #{discription,jdbcType=VARCHAR},
+      LastUpdateTime = #{lastupdatetime,jdbcType=TIMESTAMP}
+    where Id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
