@@ -161,7 +161,7 @@
             </div>
         </div>
         <div>
-            <%@ include file="Layout/paging.jsp" %>
+            <%@ include file="../Layout/paging.jsp" %>
         </div>
     </div>
 </form>

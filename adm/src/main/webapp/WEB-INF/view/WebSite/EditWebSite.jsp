@@ -16,19 +16,11 @@
     <script src="/assets/ueditor-utf8-net/lang/zh-cn/zh-cn.js"></script>
     <link href="/assets/CSS/common.css" rel="stylesheet"/>
     <script>
-        var ueContent = UE.getEditor('txtFriendLink', {
+        var ueContent = UE.getEditor('friendlinks', {
             toolbars: [
                 ['source', '|', 'undo', 'redo', '|',
-                    'bold', 'italic', 'underline', 'fontborder'/*, 'strikethrough', 'superscript', 'subscript', 'removeformat', 'formatmatch', 'autotypeset', 'blockquote', 'pasteplain', '|', 'forecolor', 'backcolor', 'insertorderedlist', 'insertunorderedlist', 'selectall', 'cleardoc', '|',
-                'rowspacingtop', 'rowspacingbottom', 'lineheight', '|',
-                'customstyle', 'paragraph', 'fontfamily', 'fontsize', '|',
-                'directionalityltr', 'directionalityrtl', 'indent', '|',
-                'justifyleft', 'justifycenter', 'justifyright', 'justifyjustify', '|', 'touppercase', 'tolowercase', '|'*/,
-                    'link', 'unlink'/*, 'anchor' ,'|', 'imagenone', 'imageleft', 'imageright', 'imagecenter', '|',
-                'simpleupload', 'insertimage', 'emotion', 'attachment', 'pagebreak', 'background', '|',
-                'horizontal', 'date', 'time', 'spechars', 'wordimage', '|',
-                'inserttable', 'deletetable', 'insertparagraphbeforetable', 'insertrow', 'deleterow', 'insertcol', 'deletecol', 'mergecells', 'mergeright', 'mergedown', 'splittocells', 'splittorows', 'splittocols', 'charts', '|',
-                'print', 'preview', 'drafts'*/]
+                    'bold', 'italic', 'underline', 'fontborder',
+                    'link', 'unlink']
             ],
             autoHeightEnabled: true,
             autoFloatEnabled: true,
@@ -42,7 +34,7 @@
 </head>
 <body>
 <div class="p10">
-    <form method="post" action="/website/EditWebSite" id="listForm">
+    <form method="post" action="/WebSite/updateweb" id="listForm">
         <div class="d-panel">
             <h3 class="arrow"><strong>分站基本信息 </strong></h3>
             <div class="content">
@@ -66,14 +58,14 @@
                     <select name="ddlCity" id="ddlCity" class="d-form-select fl mr5">
                         <option selected="selected" value="">请选择</option>
                     </select>
-                    <select name="ddlCounty" id="ddlCounty" class="d-form-select fl">
+                    <select name="webarea" id="webarea" class="d-form-select fl">
                         <option selected="selected" value="">请选择</option>
                     </select>
                     <span class="col-lab pl5 red ddlCity_tip"></span>
                 </div>
                 <div class="p5 clearfix">
                     <label class="col-lab w-1"><span class="red">*</span>可见状态：</label>
-                    <select name="isvisible" class="d-form-select fl">
+                    <select id="isvisible" name="isvisible" class="d-form-select fl">
                         <option selected value="">请选择</option>
                         <c:forEach items='<%= IsVisible.values()%>' var="a" varStatus="idx">
                             <option value="${a.code}">${a.description}</option>
@@ -143,49 +135,60 @@
                 </div>
                 <div class="p5 clearfix">
                     <label class="col-lab w-1">友情链接：</label>
-                    <textarea name="friendlinks" id="friendlinks" class="d-form-textarea w-7 fl"
-                              value="${web.friendlinks}"
-                              rows="5"></textarea>
+                    <textarea name="friendlinks" id="friendlinks" class="d-form-textarea w-7 fl" rows="5">
+                        <c:if test="${web!=null}">
+                            ${web.friendlinks}
+                        </c:if>
+                    </textarea>
                     <span class="col-lab pl5 red txtFriendLink_tip"></span>
                 </div>
                 <div class="p5 clearfix">
                     <label class="col-lab w-1">统计代码：</label>
-                    <textarea name="indexstatjs" rows="2" cols="20" id="indexstatjs"
-                              class="d-form-textarea w-7 fl" text='${web.indexstatjs}'></textarea>
+                    <textarea name="indexstatjs" rows="2" cols="20" id="indexstatjs" class="d-form-textarea w-7 fl">
+                      <c:if test="${web!=null}">
+                          ${web.indexstatjs}
+                      </c:if>
+                    </textarea>
                     <span class="col-lab pl5 red txtIndexStatJs_tip"></span>
                 </div>
             </div>
         </div>
         <div class="p10 tr">
-            <input type="hidden" id="currentid" value="${id}">
-            <input type="submit" name="btnSaveWeb" value="确认提交" onclick="return valid();" id="btnSaveWeb"
+            <input type="hidden" id="id" name="id" value="${id}">
+
+            <input type="submit" name="btnSaveWeb" value="确认提交" id="btnSaveWeb"
                    class="d-button d-button-blue"/>
         </div>
     </form>
 </div>
 
-<script src=" http://static.uc108.com/common/ui/tabs/1.0/tabs.min.js"></script>
+<script src="http://static.uc108.com/common/ui/tabs/1.0/tabs.min.js"></script>
 <script src="http://static.tcy365.com/common/ui/validator/1.0/validator.min.js"></script>
 <script>
 
-    $.get("/area/getallprovince", function (result) {
-        // console.log(result);
-        var provinceArray = result.data;
-        $("#ddlProvince").empty();
-        const opt = $("<option selected value=''>请选择</option>");
-        $("#ddlProvince").append(opt);
-        $.each(provinceArray, function (index, item) {
-            const opt = $("<option value=" + item.id + ">" + item.name + "</option>");
-            $("#ddlProvince").append(opt)
+    var isVisible = "${web.isvisible}";
+    var webGrade = "${web.webgrade}";
+    var webarea = "${web.webarea}";
+
+    $(document).ready(function () {
+        $.get("/area/getallprovince", function (result) {
+            var provinceArray = result.data;
+            $("#ddlProvince").empty();
+            const opt = $("<option selected value=''>请选择</option>");
+            $("#ddlProvince").append(opt);
+            $.each(provinceArray, function (index, item) {
+                const opt = $("<option value=" + item.id + ">" + item.name + "</option>");
+                $("#ddlProvince").append(opt)
+            });
         });
 
     });
+
 
     $("#ddlProvince").on("change",
         function () {
             var url = "/area/getcity/" + $("#ddlProvince").val();
             $.get(url, function (result) {
-                // console.log(result);
                 $("#ddlCity").empty();
                 $("#ddlCity").append("<option selected value=''>请选择</option>");
                 $("#ddlCounty").empty();
@@ -195,6 +198,7 @@
                     $("#ddlCity").append("<option value=" + item.id + ">" + item.name + "</option>")
                 });
             });
+
         });
 
     $("#ddlCity").on("change",
@@ -202,19 +206,17 @@
             var url = "/area/getdistrict/" + $("#ddlCity").val();
             $.get(url, function (result) {
                 // console.log(result);
-                $("#ddlCounty").empty();
+                $("#webarea").empty();
                 const opt = $("<option selected value=''>请选择</option>");
-                $("#ddlCounty").append(opt);
+                $("#webarea").append(opt);
                 $.each(result.data, function (index, item) {
                     const opt = $("<option value=" + item.id + ">" + item.name + "</option>");
-                    $("#ddlCounty").append(opt)
+                    $("#webarea").append(opt)
                 });
             });
+
         });
 
-    var isVisible = "${input.isvisible}";
-    var webGrade = "${input.webgrade}";
-    var webarea = "${input.webarea}";
 
     $(".changevisible").click(function () {
         console.log();
@@ -234,6 +236,7 @@
             }
         });
     });
+
 
 </script>
 <script>

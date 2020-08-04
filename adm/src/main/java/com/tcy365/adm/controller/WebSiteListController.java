@@ -32,7 +32,7 @@ public class WebSiteListController {
         model.addAttribute("input",queryWebInput);
         PageInfo<tbl_Web> listWeb = tblWebService.selectByPage(pageIndex, pageSize, null);
         request.setAttribute("pageInfo", listWeb);
-        return "WebSiteList.jsp";
+        return "WebSite/WebSiteList.jsp";
     }
 
     String getPageProfix(HttpServletRequest request) {
