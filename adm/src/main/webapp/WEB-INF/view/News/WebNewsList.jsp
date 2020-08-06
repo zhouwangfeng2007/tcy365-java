@@ -1,10 +1,5 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Administrator
-  Date: 2020/8/4
-  Time: 21:02
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="com.tcy365.common.bizEnum.IsVisible" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head runat="server">
@@ -23,18 +18,18 @@
 <form id="form1" runat="server">
     <div class="p10">
         <div class="d-panel">
-            <h3 class="arrow"><strong>
-                <asp:Literal ID="ltSearchWebInfo" Text="查找资讯" runat="server"></asp:Literal></strong>
+            <h3 class="arrow">
                 <p class="d-panel-btns noclose">
                     <a class="d-button d-button-white" id="addNews" href="#"
-                       onclick="frame('新建资讯', '/News/WebNewsEdit.aspx?wid=<% =ViewState["tblWebId"] %>', 900, 500)">新建资讯</a>
+                       onclick="frame('新建资讯', '/News/WebNewsEdit?wid=${web.id}', 900, 500)">新建资讯</a>
                 </p>
             </h3>
             <div class="content nopadding">
                 <div class="d-seach">
                     <div class="d-seach-rank">
                         <label>资讯标题：</label>
-                        <asp:TextBox ID="txtTitle" runat="server" class="d-form-input w-10"></asp:TextBox>
+                        <input name="txtTitle" id="txtTitle" class="d-form-input w-10"/>
+
                         &nbsp;&nbsp;&nbsp;&nbsp; 置顶：<asp:CheckBox ID="ckbIsAllTop" runat="server"/>
                     </div>
                     <div class="d-seach-rank clearfix">
@@ -118,50 +113,47 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <asp:Repeater ID="rptNewsList" runat="server" OnItemDataBound="rptNewsList_ItemDataBound"
-                                  OnItemCommand="rptNewsList_ItemCommand">
-                        <ItemTemplate>
+
                             <tr>
                                 <td>
-                                    <asp:Literal ID="ltNewsID" runat="server"></asp:Literal>
+                                  ltNewsID
                                 </td>
                                 <td>
-                                    <asp:Literal ID="ltNewsTitle" runat="server"></asp:Literal>
+                                   ltNewsTitle
                                 </td>
                                 <td>
-                                    <asp:Literal ID="ltNewsClass" runat="server"></asp:Literal>
+                                     ltNewsClass
                                 </td>
                                 <td>
-                                    <asp:Literal ID="ltAssociateGame" runat="server"></asp:Literal>
+                                    ltAssociateGame
                                 </td>
                                 <td>
-                                    <asp:Literal ID="ltValidData" runat="server"></asp:Literal></td>
+                                     ltValidData
                                 <td>
-                                    <asp:Literal ID="ltIsVisible" runat="server"></asp:Literal>
+                                     ltIsVisible
                                 </td>
                                 <td>
-                                    <asp:Literal ID="ltIsMobileNews" runat="server"></asp:Literal>
+                                     ltIsMobileNews
                                 </td>
                                 <td>
-                                    <asp:Literal ID="ltCreator" runat="server"></asp:Literal>
+                                    ltCreator
                                 </td>
                                 <td>
-                                    <asp:Literal ID="ltAddTime" runat="server"></asp:Literal></td>
+                                     ltAddTime
                                 <td>
-                                    <asp:Literal ID="ltLastUpdTime" runat="server"></asp:Literal></td>
+                                     ltLastUpdTime </td>
                                 <td><a href="javascript:;" class="edit"
-                                       onclick="frame('编辑资讯', '/News/WebNewsEdit.aspx?nid=<%#Eval("Id") %>&wid=<% =ViewState["tblWebId"] %>', 900, 500)">编辑</a>
+                                       onclick="frame('编辑资讯', '/News/WebNewsEdit?nid=&wid=', 900, 500)">编辑</a>
                                 </td>
                                 <td>
-                                    <asp:LinkButton ID="lbtnShow" runat="server" Visible="false" class="show-type"
-                                                    CommandArgument='<%#Eval("Id") %>'
-                                                    CommandName="Show">显示</asp:LinkButton>
-                                    <asp:LinkButton ID="lbtnHide" runat="server" Visible="false" class="show-type"
-                                                    CommandArgument='<%#Eval("Id") %>'
-                                                    CommandName="Hide">隐藏</asp:LinkButton></td>
+<%--                                    <c:if test="<%= web.isvisible==IsVisible.NotVisible.getCode()  %>">--%>
+<%--                                        <input type="button" class="d-button d-button-blue changevisible" value="显示"--%>
+<%--                                               wid="<%=web.id%>"--%>
+<%--                                               vvid="<%= IsVisible.Visible.getCode()%>">--%>
+<%--                                    </c:if>--%>
+                                </td>
                             </tr>
-                        </ItemTemplate>
-                    </asp:Repeater>
+
 
                     </tbody>
                 </table>
@@ -172,8 +164,7 @@
     <script src="http://static.tcy365.com/common/ui/combobox/1.0/combobox.min.js"></script>
     <script src="http://static.tcy365.com/common/ui/dialog/1.0/dialog.js"></script>
     <div>
-        <cc:AspNetPager ID="ctrAspNetPager" runat="server" LinkType="服务器提交" PageSize="10" ShowPagerInfo="true"
-                        ShowGoTo="true" OnPageIndexChange="ctrAspNetPager_PageIndexChange"/>
+        <%@ include file="../Layout/paging.jsp" %>
     </div>
     <script>
 

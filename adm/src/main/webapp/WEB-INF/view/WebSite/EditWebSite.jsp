@@ -116,17 +116,17 @@
                         <div class="d-tabs-view">
                             <div class="p5 clearfix">
                                 <label class="col-lab w-1">Title：</label>
-                                <input name="txtMTitle" type="text" id="txtMTitle" value='${mobileTkd.title}'
+                                <input name="mTitle" type="text" id="mTitle" value='${mobileTkd.title}'
                                        class="d-form-input w-7 fl"/>
                             </div>
                             <div class="p5 clearfix">
                                 <label class="col-lab w-1">keywords：</label>
-                                <input name="txtMKeyWords" type="text" id="txtMKeyWords" value='${mobileTkd.keywords}'
+                                <input name="mKeyWords" type="text" id="mKeyWords" value='${mobileTkd.keywords}'
                                        class="d-form-input w-7 fl"/>
                             </div>
                             <div class="p5 clearfix">
                                 <label class="col-lab w-1">Description：</label>
-                                <input name="txtMDescription" type="text" id="txtMDescription"
+                                <input name="mDescription" type="text" id="mDescription"
                                        value='${mobileTkd.discription}'
                                        class="d-form-input w-7 fl"/>
                             </div>

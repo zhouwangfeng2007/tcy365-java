@@ -32,22 +32,22 @@ public class EditWebSiteController {
         model.addAttribute("id", id);
 
         tbl_Web web = tblWebService.getWebById(id);
-        if(web==null){
-            web=new tbl_Web();
+        if (web == null) {
+            web = new tbl_Web();
         }
         web.indexstatjs = StringEscapeUtils.escapeHtml(web.indexstatjs);
         web.friendlinks = StringEscapeUtils.escapeHtml(web.friendlinks);
         model.addAttribute("web", web);
-        String mobileWebdomain = String.format("%s", (web.webdomain+"").replace("/", ""));
+        String mobileWebdomain = String.format("%s", (web.webdomain + "").replace("/", ""));
         tbl_Tkd mobileTkd = tbltkdService.getMobileWebTkd(mobileWebdomain);
         model.addAttribute("mobileTkd", mobileTkd);
 
         return "WebSite/EditWebSite.jsp";
     }
 
-    @RequestMapping(value="/updateweb" ,method = RequestMethod.POST)
-    public String UpdateWeb(UpdateWebInput input){
-
-            return "forward:/WebSite/EditWebSite?wid="+input.id;
+    @RequestMapping(value = "/updateweb", method = RequestMethod.POST)
+    public String UpdateWeb(UpdateWebInput input) {
+        tblWebService.saveWeb(input);
+        return "forward:/WebSite/EditWebSite?wid=" + input.id;
     }
 }

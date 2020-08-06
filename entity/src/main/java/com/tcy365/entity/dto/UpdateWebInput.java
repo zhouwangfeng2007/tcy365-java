@@ -5,5 +5,7 @@ import lombok.Data;
 
 @Data
 public class UpdateWebInput extends tbl_Web {
-
+   public String mTitle;
+   public String mDescription;
+   public String mKeyWords;
 }
